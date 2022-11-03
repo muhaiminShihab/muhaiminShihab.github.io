@@ -567,7 +567,7 @@ section.padding-60 {
   margin: 0 0 6em;
   float: right;
   width: 80%;
-  padding-left: 60px;
+  padding-left: 30px;
 }
 .entry .body p {
   margin-bottom: 0;
@@ -1652,12 +1652,27 @@ section.padding-60 {
   .hero .cta p {
     font-size: 15px;
     margin-bottom: 25px !important;
+    text-align: justify;
   }
 
   .hero {
     height: auto;
     margin-top: 0;
-    padding: 60px 30px;
+    padding: 60px 15px;
+  }
+
+  section.padding {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  #about p,
+  #skills p {
+    text-align: justify;
+  }
+
+  #resume .entry .body p {
+    text-align: justify;
   }
 
   .fact-item {
