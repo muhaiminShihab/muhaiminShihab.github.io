@@ -174,7 +174,7 @@ $(document).on("ready", function () {
 $(function () {
   "use strict";
 
-  $(".menu-icon").on("click", function () {
+  $(".menu-icon, a").on("click", function () {
     $("header.left").toggleClass("open");
     $(".mobile-header, main.content").toggleClass("push");
   });
