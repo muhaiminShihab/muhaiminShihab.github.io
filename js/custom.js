@@ -174,7 +174,14 @@ $(document).on("ready", function () {
 $(function () {
   "use strict";
 
-  $(".menu-icon, a").on("click", function () {
+  if (window.innerWidth <= 992) {
+    $("li > a").on("click", function () {
+      $("header.left").toggleClass("open");
+      $(".mobile-header, main.content").toggleClass("push");
+    });
+  }
+
+  $(".menu-icon").on("click", function () {
     $("header.left").toggleClass("open");
     $(".mobile-header, main.content").toggleClass("push");
   });
