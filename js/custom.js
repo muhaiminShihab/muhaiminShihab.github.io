@@ -147,13 +147,14 @@ $(document).on("ready", function () {
     dots: false,
     arrows: false,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           dots: false,
           arrows: false,
         },
