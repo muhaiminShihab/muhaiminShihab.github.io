@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* root css */
+:root {
+    --font-raleway: 'Raleway', sans-serif;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-raleway);
+        scroll-behavior: smooth;
+    }
+}
+
+.project_card {
+    @apply transition-all duration-300 relative w-[49%] rounded-lg overflow-hidden mb-1;
+}
+
+.project_card_hover {
+    @apply absolute top-0 left-0 w-full h-full p-4 text-white transition-opacity duration-300 opacity-0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.project_card:hover .project_card_hover {
+    @apply opacity-100 cursor-pointer;
+}
