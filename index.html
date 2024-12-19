@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <!-- main css -->
     <link href="./assets/main.css" rel="stylesheet">
 </head>
@@ -26,12 +29,12 @@
         <!-- hero area -->
         <section class="hero_area h-screen flex flex-col items-center justify-center">
             <div class="container">
-                <figure class="w-32 h-32 rounded-full overflow-hidden shadow-lg border border-gray-400">
+                <figure class="hero-img w-32 h-32 rounded-full overflow-hidden shadow-lg border border-gray-400">
                     <img src="./assets/images/author_1.jpg" alt="Md Muhaiminul Islam Shihab"
                         class="w-full h-full object-cover">
                 </figure>
-                <h1 class="text-5xl mt-4 mb-1 font-bold">👋 Hi, I'm Shihab.</h1>
-                <h2 class="text-[20px]">Experienced Software Developer specializing in PHP, Laravel, Vue.js, Bootstrap,
+                <h1 class="hero-title text-5xl mt-4 mb-1 font-bold">👋 Hi, I'm Shihab.</h1>
+                <h2 class="hero-desc text-[20px]">Experienced Software Developer specializing in PHP, Laravel, Vue.js, Bootstrap,
                     Tailwind CSS, MySQL and more. Love to explore new tools and technologies.</h2>
 
                 <div x-data="{}" x-init="$nextTick(() => {
@@ -39,7 +42,7 @@
                         ul.insertAdjacentHTML('afterend', ul.outerHTML);
                         ul.nextSibling.setAttribute('aria-hidden', 'true');
                     })"
-                    class="mt-5 w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                    class="hero-slider mt-5 w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
                     <ul x-ref="logos"
                         class="flex items-center justify-center md:justify-start [&_li]:mx-5 [&_img]:max-w-none animate-infinite-scroll">
                         <li>
@@ -114,7 +117,7 @@
                     </ul>
                 </div>
 
-                <div class="mt-24 text-center">
+                <div class="hero-next mt-24 text-center">
                     <a href="#about-me"
                         class="bg-gray-100 text-black py-5 px-2 rounded-full inline-block hover:bg-blue-500 hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
@@ -132,8 +135,8 @@
         <!-- about me -->
         <section class="about_section py-20" id="about-me">
             <div class="container">
-                <h1 class="text-2xl font-bold">About Me</h1>
-                <p>
+                <h1 class="about-title text-2xl font-bold">About Me</h1>
+                <p class="about-desc">
                     My name is Md Muhaiminul Islam Shihab, I'm a passionate Software Developer specializing in HTML,
                     CSS, Bootstrap, Tailwind CSS, jQuery, JavaScript, Vue.js, Nuxt.js, React.js, Next.js, React Native,
                     PHP, Laravel, Livewire, Filament PHP, MySQL, and PostgreSQL. With over three years of dedicated
@@ -143,7 +146,7 @@
                 </p>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
-                    <div class="grid gap-4">
+                    <div class="grid gap-4 about-gallery">
                         <div>
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_1.jpg" alt="">
                         </div>
@@ -151,7 +154,7 @@
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_2.jpg" alt="">
                         </div>
                     </div>
-                    <div class="grid gap-4">
+                    <div class="grid gap-4 about-gallery">
                         <div>
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_7.jpg" alt="">
                         </div>
@@ -159,7 +162,7 @@
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_4.jpg" alt="">
                         </div>
                     </div>
-                    <div class="grid gap-4">
+                    <div class="grid gap-4 about-gallery">
                         <div>
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_5.jpg" alt="">
                         </div>
@@ -174,12 +177,12 @@
         <!-- work experience -->
         <section class="experience_section py-20">
             <div class="container">
-                <h1 class="text-2xl font-bold">Work Experience</h1>
+                <h1 class="experience-title text-2xl font-bold">Work Experience</h1>
 
                 <!-- Timeline -->
                 <div class="mt-5">
                     <!-- Item -->
-                    <div class="flex gap-x-3">
+                    <div class="flex gap-x-3 experience-item">
                         <!-- Icon -->
                         <div
                             class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
@@ -220,7 +223,7 @@
                     <!-- End Item -->
 
                     <!-- Item -->
-                    <div class="flex gap-x-3">
+                    <div class="flex gap-x-3 experience-item">
                         <!-- Icon -->
                         <div
                             class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
@@ -261,7 +264,7 @@
                     <!-- End Item -->
 
                     <!-- Item -->
-                    <div class="flex gap-x-3">
+                    <div class="flex gap-x-3 experience-item">
                         <!-- Icon -->
                         <div
                             class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
@@ -302,7 +305,7 @@
                     <!-- End Item -->
 
                     <!-- Item -->
-                    <div class="flex gap-x-3">
+                    <div class="flex gap-x-3 experience-item">
                         <!-- Icon -->
                         <div
                             class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
@@ -343,7 +346,7 @@
                     <!-- End Item -->
 
                     <!-- Item -->
-                    <div class="flex gap-x-3">
+                    <div class="flex gap-x-3 experience-item">
                         <!-- Icon -->
                         <div
                             class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
@@ -390,7 +393,7 @@
         <!-- projects -->
         <section class="projects_section py-20">
             <div class="container">
-                <h1 class="text-2xl font-bold">Projects</h1>
+                <h1 class="project-title text-2xl font-bold">Projects</h1>
                 <div class="flex gap-2 flex-wrap mt-5 justify-between">
                     <div class="project_card">
                         <figure>
@@ -641,7 +644,7 @@
 
                     <div class="mt-5 mx-auto">
                         <a href="#"
-                            class="bg-blue-800 text-white py-2 px-6 rounded-full flex gap-2 hover:gap-4 transition-all uppercase">
+                            class="project-more bg-blue-800 text-white py-2 px-6 rounded-full flex gap-2 hover:gap-4 transition-all uppercase">
                             <span>Show More</span>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
@@ -664,8 +667,8 @@
         <section class="contact_section py-20">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="text-5xl font-bold mb-2">Get in Touch</h1>
-                    <p class="text-xl text-gray-500">
+                    <h1 class="contact-title text-5xl font-bold mb-2">Get in Touch</h1>
+                    <p class="contact-desc text-xl text-gray-500">
                         Feel free to reach out! Send me a <a href="https://linkedin.com/in/muhaiminshihab"
                             target="_blank" class="text-blue-500">direct message on LinkedIn</a> with a clear question,
                         and I’ll get
@@ -675,7 +678,7 @@
 
                 <div class="bg-white w-full h-auto mt-5 flex items-center justify-center gap-4 flex-wrap">
                     <a href="#" target="_blank"
-                        class="cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-green-200">
+                        class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-green-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 93 92" fill="none">
                             <rect x="1.13867" width="91.5618" height="91.5618" rx="15" fill="#ECFFF5" />
                             <path
@@ -688,7 +691,7 @@
                     </a>
 
                     <a href="#" target="_blank"
-                        class="cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
+                        class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 92 93" fill="none">
                             <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#EEFAFF" />
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -698,7 +701,7 @@
                     </a>
 
                     <a href="#" target="_blank"
-                        class="cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-purple-200">
+                        class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-purple-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 93 93" fill="none">
                             <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#F0EEFF" />
                             <path
@@ -721,7 +724,7 @@
                     </a>
 
                     <a href="#" target="_blank"
-                        class="cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-sky-200">
+                        class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-sky-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 92 93" fill="none">
                             <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#E5F7FF" />
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -731,7 +734,7 @@
                     </a>
 
                     <a href="#" target="_blank"
-                        class="w-12 h-12 flex items-center justify-center bg-gray-100 cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
+                        class="contact-icon w-12 h-12 flex items-center justify-center bg-gray-100 cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 54 41" fill="none">
                             <path
                                 d="M4.00654 40.1236H12.4893V19.5227L0.371094 10.4341V36.4881C0.371094 38.4997 2.00099 40.1236 4.00654 40.1236Z"
