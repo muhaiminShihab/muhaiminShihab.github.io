@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <main class="max-w-2xl mx-auto">
+    <main class="max-w-2xl mx-auto overflow-hidden">
         <!-- hero area -->
         <section class="hero_area h-screen flex flex-col items-center justify-center">
             <div class="container">
@@ -33,8 +33,8 @@
                     <img src="./assets/images/author_1.jpg" alt="Md Muhaiminul Islam Shihab"
                         class="w-full h-full object-cover">
                 </figure>
-                <h1 class="hero-title text-5xl mt-4 mb-1 font-bold">👋 Hi, I'm Shihab.</h1>
-                <h2 class="hero-desc text-[20px]">Experienced Software Developer specializing in PHP, Laravel, Vue.js, Bootstrap,
+                <h1 class="hero-title text-4xl lg:text-5xl mt-4 mb-1 font-bold">👋 Hi, I'm Shihab.</h1>
+                <h2 class="hero-desc lg:text-[20px]">Experienced Software Developer specializing in PHP, Laravel, Vue.js, Bootstrap,
                     Tailwind CSS, MySQL and more. Love to explore new tools and technologies.</h2>
 
                 <div x-data="{}" x-init="$nextTick(() => {
@@ -119,7 +119,7 @@
 
                 <div class="hero-next mt-24 text-center">
                     <a href="#about-me"
-                        class="bg-gray-100 text-black py-5 px-2 rounded-full inline-block hover:bg-blue-500 hover:text-white transition-all">
+                        class="bg-gray-100 text-black py-3 px-2 rounded-full inline-block hover:bg-gray-200 hover:py-4 transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
                             <path d="M12 20L12 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                 stroke-linejoin="round" />
@@ -133,10 +133,10 @@
         </section>
 
         <!-- about me -->
-        <section class="about_section py-20" id="about-me">
+        <section class="about_section" id="about-me">
             <div class="container">
                 <h1 class="about-title text-2xl font-bold">About Me</h1>
-                <p class="about-desc">
+                <p class="about-desc text-justify">
                     My name is Md Muhaiminul Islam Shihab, I'm a passionate Software Developer specializing in HTML,
                     CSS, Bootstrap, Tailwind CSS, jQuery, JavaScript, Vue.js, Nuxt.js, React.js, Next.js, React Native,
                     PHP, Laravel, Livewire, Filament PHP, MySQL, and PostgreSQL. With over three years of dedicated
@@ -145,7 +145,7 @@
                     technologies.
                 </p>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
                     <div class="grid gap-4 about-gallery">
                         <div>
                             <img class="h-auto max-w-full rounded-lg" src="./assets/images/gallery/IMG_1.jpg" alt="">
@@ -175,7 +175,7 @@
         </section>
 
         <!-- work experience -->
-        <section class="experience_section py-20">
+        <section class="experience_section">
             <div class="container">
                 <h1 class="experience-title text-2xl font-bold">Work Experience</h1>
 
@@ -194,7 +194,7 @@
 
                         <!-- Right Content -->
                         <div class="grow pt-0.5 pb-8">
-                            <div class="flex gap-4 items-center justify-between">
+                            <div class="md:flex gap-4 items-center justify-between">
                                 <div class="flex gap-4">
                                     <div>
                                         <figure class="w-12 h-12 rounded-full overflow-hidden bg-gray-50 border">
@@ -211,7 +211,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="text-right w-48">
+                                <div class="lg:text-right lg:w-48 ml-[65px] md:ml-0">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">
                                         Nov, 2023 - Present
                                     </p>
@@ -235,7 +235,7 @@
 
                         <!-- Right Content -->
                         <div class="grow pt-0.5 pb-8">
-                            <div class="flex gap-4 items-center justify-between">
+                            <div class="md:flex gap-4 items-center justify-between">
                                 <div class="flex gap-4">
                                     <div>
                                         <figure class="w-12 h-12 rounded-full overflow-hidden bg-gray-50 border">
@@ -252,7 +252,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="text-right w-48">
+                                <div class="lg:text-right lg:w-48 ml-[65px] md:ml-0">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">
                                         Apr, 2023 - Present
                                     </p>
@@ -276,7 +276,7 @@
 
                         <!-- Right Content -->
                         <div class="grow pt-0.5 pb-8">
-                            <div class="flex gap-4 items-center justify-between">
+                            <div class="md:flex gap-4 items-center justify-between">
                                 <div class="flex gap-4">
                                     <div>
                                         <figure class="w-12 h-12 rounded-full overflow-hidden bg-gray-50 border">
@@ -293,7 +293,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="text-right w-48">
+                                <div class="lg:text-right lg:w-48 ml-[65px] md:ml-0">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">
                                         Sept, 2022 - Oct, 2023
                                     </p>
@@ -317,7 +317,7 @@
 
                         <!-- Right Content -->
                         <div class="grow pt-0.5 pb-8">
-                            <div class="flex gap-4 items-center justify-between">
+                            <div class="md:flex gap-4 items-center justify-between">
                                 <div class="flex gap-4">
                                     <div>
                                         <figure class="w-12 h-12 rounded-full overflow-hidden bg-gray-50 border">
@@ -334,7 +334,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="text-right w-48">
+                                <div class="lg:text-right lg:w-48 ml-[65px] md:ml-0">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">
                                         Sept, 2021 - Aug, 2022
                                     </p>
@@ -358,7 +358,7 @@
 
                         <!-- Right Content -->
                         <div class="grow pt-0.5 pb-8">
-                            <div class="flex gap-4 items-center justify-between">
+                            <div class="md:flex gap-4 items-center justify-between">
                                 <div class="flex gap-4">
                                     <div>
                                         <figure class="w-12 h-12 rounded-full overflow-hidden bg-gray-50 border">
@@ -375,7 +375,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="text-right w-48">
+                                <div class="lg:text-right lg:w-48 ml-[65px] md:ml-0">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">
                                         Oct, 2020 - May, 2021
                                     </p>
@@ -391,7 +391,7 @@
         </section>
 
         <!-- projects -->
-        <section class="projects_section py-20">
+        <section class="projects_section">
             <div class="container">
                 <h1 class="project-title text-2xl font-bold">Projects</h1>
                 <div class="flex gap-2 flex-wrap mt-5 justify-between">
@@ -644,11 +644,11 @@
 
                     <div class="mt-5 mx-auto">
                         <a href="#"
-                            class="project-more bg-blue-800 text-white py-2 px-6 rounded-full flex gap-2 hover:gap-4 transition-all uppercase">
+                            class="project-more bg-gray-200 hover:bg-gray-300 py-2 px-6 rounded-full flex gap-2 hover:gap-4 transition-all uppercase">
                             <span>Show More</span>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                    color="#FFFFFF" fill="none">
+                                    color="#000000" fill="none">
                                     <path d="M20.0001 11.9998L4.00012 11.9998" stroke="currentColor" stroke-width="1.5"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                     <path
@@ -664,10 +664,10 @@
         </section>
 
         <!-- contact -->
-        <section class="contact_section py-20">
+        <section class="contact_section">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="contact-title text-5xl font-bold mb-2">Get in Touch</h1>
+                    <h1 class="contact-title text-4xl lg:text-5xl font-bold mb-2">Get in Touch</h1>
                     <p class="contact-desc text-xl text-gray-500">
                         Feel free to reach out! Send me a <a href="https://linkedin.com/in/muhaiminshihab"
                             target="_blank" class="text-blue-500">direct message on LinkedIn</a> with a clear question,
@@ -677,7 +677,7 @@
                 </div>
 
                 <div class="bg-white w-full h-auto mt-5 flex items-center justify-center gap-4 flex-wrap">
-                    <a href="#" target="_blank"
+                    <a href="https://api.whatsapp.com/send?phone=+8801310550188&text=Hello, Shihab!" target="_blank"
                         class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-green-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 93 92" fill="none">
                             <rect x="1.13867" width="91.5618" height="91.5618" rx="15" fill="#ECFFF5" />
@@ -690,7 +690,7 @@
                         </svg>
                     </a>
 
-                    <a href="#" target="_blank"
+                    <a href="https://linkedin.com/in/muhaiminshihab" target="_blank"
                         class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 92 93" fill="none">
                             <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#EEFAFF" />
@@ -700,7 +700,7 @@
                         </svg>
                     </a>
 
-                    <a href="#" target="_blank"
+                    <a href="https://m.me/muhaiminshihab" target="_blank"
                         class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-purple-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 93 93" fill="none">
                             <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#F0EEFF" />
@@ -723,17 +723,7 @@
                         </svg>
                     </a>
 
-                    <a href="#" target="_blank"
-                        class="contact-icon cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-sky-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 92 93" fill="none">
-                            <rect x="0.138672" y="1" width="91.5618" height="91.5618" rx="15" fill="#E5F7FF" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M71.153 49.5768C71.153 63.3922 59.9534 74.5918 46.138 74.5918C32.3227 74.5918 21.123 63.3922 21.123 49.5768C21.123 35.7614 32.3227 24.5618 46.138 24.5618C59.9534 24.5618 71.153 35.7614 71.153 49.5768ZM48.5352 41.901C44.2377 43.7573 31.8466 49.0289 31.8466 49.0289C28.91 50.2169 30.6289 51.3306 30.6289 51.3306C30.6289 51.3306 33.1357 52.2216 35.2846 52.8898C37.4333 53.558 38.5793 52.8156 38.5793 52.8156C38.5793 52.8156 43.5931 49.4002 48.6784 45.7619C52.2597 43.2375 51.4002 45.3165 50.5407 46.2075C48.6784 48.138 45.5986 51.1821 43.02 53.6323C41.8741 54.6719 42.4471 55.5628 42.9485 56.0083C44.4067 57.2873 47.8411 59.6135 49.4003 60.6696C49.8324 60.9623 50.1204 61.1574 50.1826 61.2057C50.5407 61.5028 52.5463 62.8392 53.7639 62.5422C54.9815 62.2452 55.1247 60.5374 55.1247 60.5374C55.1247 60.5374 56.0558 54.4491 56.9154 48.8804C57.0746 47.787 57.2338 46.7166 57.3822 45.7184C57.768 43.1241 58.0812 41.0182 58.133 40.2675C58.3479 37.7431 55.7693 38.7825 55.7693 38.7825C55.7693 38.7825 50.1826 41.1586 48.5352 41.901Z"
-                                fill="#34AADF" />
-                        </svg>
-                    </a>
-
-                    <a href="#" target="_blank"
+                    <a href="mailto:hostforshihab@gmail.com" target="_blank"
                         class="contact-icon w-12 h-12 flex items-center justify-center bg-gray-100 cursor-pointer rounded-md shadow-md shadow-transparent transition-all duration-300 hover:shadow-blue-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 54 41" fill="none">
                             <path

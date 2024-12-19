@@ -14,8 +14,16 @@
     }
 }
 
+section {
+    @apply py-10 lg:py-20;
+}
+
+section:last-child {
+    @apply pb-0;
+}
+
 .project_card {
-    @apply transition-all duration-300 relative w-[49%] rounded-lg overflow-hidden mb-1;
+    @apply transition-all duration-300 relative w-full md:w-[49%] rounded-lg overflow-hidden mb-1;
 }
 
 .project_card_hover {
