@@ -19,7 +19,7 @@ section {
 }
 
 section:last-child {
-    @apply pb-0;
+    @apply pb-10;
 }
 
 .project_card {
