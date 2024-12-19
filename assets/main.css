@@ -26,3 +26,7 @@
 .project_card:hover .project_card_hover {
     @apply opacity-100 cursor-pointer;
 }
+
+.bg-background {
+    background-color: hsl(0 0% 100%);
+}
