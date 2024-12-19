@@ -26,6 +26,11 @@ projectItems.forEach((item, index) => {
     ScrollReveal().reveal(item, { delay: 200 + index * 250, origin: 'bottom' });
 });
 
+const projectItems2 = document.querySelectorAll('.project_card_2');
+projectItems2.forEach((item, index) => {
+    ScrollReveal().reveal(item, { delay: 200 + index * 250, origin: 'bottom' });
+});
+
 ScrollReveal().reveal('.project-more', { delay: 1800, origin: 'top' });
 
 // Contact area
