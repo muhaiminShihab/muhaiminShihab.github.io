@@ -31,7 +31,7 @@ projectItems2.forEach((item, index) => {
     ScrollReveal().reveal(item, { delay: 200 + index * 250, origin: 'bottom' });
 });
 
-ScrollReveal().reveal('.project-more', { delay: 1800, origin: 'top' });
+ScrollReveal().reveal('.project-more', { delay: 800, origin: 'top' });
 
 // Contact area
 ScrollReveal().reveal('.contact-title', { delay: 300, origin: 'bottom' });
