@@ -38,3 +38,22 @@ section:last-child {
 .bg-background {
     background-color: hsl(0 0% 100%);
 }
+
+.meeting-btn {
+    z-index: 1000;
+    @apply transition-all relative p-3 bg-white shadow-lg rounded-full flex items-center justify-center border;
+}
+
+.meeting-btn:hover img {
+    @apply transition-all scale-125;
+}
+
+.meeting-btn::after {
+    content: '';
+    z-index: -1;
+    @apply animate-ping rounded-full bg-gray-200 w-full h-full top-0 left-0 absolute transition-all;
+}
+
+.meeting-btn:hover::after {
+    @apply animate-none bg-white transition-all;
+}
