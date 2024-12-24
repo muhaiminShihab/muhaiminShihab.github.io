@@ -12,3 +12,8 @@ ScrollReveal({
     distance: '50px',      // Adds a nice slide effect
     viewOffset: { top: 20, bottom: 20 }, // Trigger animations slightly earlier
 });
+
+// Stop preloader
+window.onload = function () {
+    document.getElementById('preloader').style.display = 'none';
+}
