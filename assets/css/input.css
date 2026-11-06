@@ -2,58 +2,374 @@
 @tailwind components;
 @tailwind utilities;
 
-/* root css */
-:root {
-    --font-raleway: 'Raleway', sans-serif;
-}
-
 @layer base {
+    :root {
+        color-scheme: dark;
+    }
+
     html {
-        font-family: var(--font-raleway);
+        @apply bg-ink font-sans text-fg antialiased;
         scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+
+    ::selection {
+        @apply bg-accent text-ink;
+    }
+
+    :focus-visible {
+        outline: 2px solid theme('colors.accent.DEFAULT');
+        outline-offset: 3px;
     }
 }
 
-section {
-    @apply py-10 lg:py-20;
+@layer components {
+    .container-page {
+        @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8;
+    }
+
+    .tile {
+        @apply relative overflow-hidden rounded-tile border border-line bg-surface;
+    }
+
+    .tile-interactive {
+        transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .tile-interactive:hover {
+        transform: translateY(-2px);
+        border-color: theme('colors.line.strong');
+    }
+
+    /* soft accent glow that follows the cursor (position set in main.js) */
+    .spotlight::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(200 245 96 / 0.09), transparent 60%);
+    }
+
+    .spotlight:hover::before {
+        opacity: 1;
+    }
+
+    .spotlight > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .eyebrow {
+        @apply font-mono text-[13px] text-fg-muted;
+    }
+
+    .label {
+        @apply font-mono text-xs uppercase tracking-[0.08em] text-fg-muted;
+    }
+
+    .section-title {
+        @apply font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[56px];
+    }
+
+    .chip {
+        @apply rounded-full border border-[#2E2E37] bg-raised px-3 py-1.5 text-sm;
+    }
+
+    .tag {
+        @apply rounded-full border border-[#2E2E37] px-2.5 py-1 font-mono text-xs text-fg-soft;
+    }
+
+    .btn {
+        @apply inline-flex min-h-[44px] items-center justify-center gap-2.5 rounded-full px-6 py-3.5 font-semibold transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply btn bg-accent text-ink hover:bg-accent-strong;
+    }
+
+    .btn-ghost {
+        @apply btn border border-line-strong font-medium text-fg hover:border-fg-muted hover:bg-white/5;
+    }
+
+    .nav-link {
+        @apply rounded-full px-4 py-3 text-[15px] text-fg-soft transition-colors hover:bg-white/5 hover:text-fg;
+    }
+
+    /* project cards that stack on top of each other while scrolling (#work) */
+    .stack-card {
+        @apply relative grid gap-6 rounded-tile p-5 text-ink sm:p-7 md:grid-cols-[1fr_1.05fr] md:gap-10 md:p-8;
+        background-color: var(--card, theme('colors.accent.DEFAULT'));
+        box-shadow: 0 -18px 48px -20px rgb(0 0 0 / 0.75);
+        /* --p (0 → 1) is how far the next card has slid over this one; set in main.js */
+        transform-origin: 50% 0;
+        scale: calc(1 - var(--p, 0) * 0.08);
+    }
+
+    .stack-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: theme('colors.ink');
+        opacity: calc(var(--p, 0) * 0.5);
+        pointer-events: none;
+    }
+
+    .stack-card :focus-visible {
+        outline-color: theme('colors.ink');
+    }
+
+    .stack-media {
+        @apply relative order-first aspect-[16/11] overflow-hidden rounded-2xl bg-ink/10 md:order-none md:self-center lg:aspect-auto lg:min-h-[22rem] lg:self-stretch;
+    }
+
+    .stack-media img {
+        @apply absolute inset-0 h-full w-full object-cover;
+        transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .stack-media:hover img {
+        transform: scale(1.04);
+    }
+
+    .stack-link {
+        @apply mt-6 flex min-h-[44px] items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-sm transition-shadow duration-300 hover:shadow-lg;
+    }
 }
 
-section:last-child {
-    @apply pb-10;
+/* each card sticks a little lower than the one before it, so the earlier ones peek out above */
+@media (min-width: 768px) and (min-height: 640px) {
+    .stack-card {
+        position: sticky;
+        top: calc(6rem + var(--i, 0) * 3.5rem);
+    }
 }
 
-.project_card {
-    @apply transition-all duration-300 relative w-full md:w-[49%] rounded-lg overflow-hidden mb-1;
+/* scroll reveal: only hides content when JS is running (html.js) */
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--d, 0ms);
 }
 
-.project_card_hover {
-    @apply absolute top-0 left-0 w-full h-full p-4 text-white transition-opacity duration-300 opacity-0;
-    background-color: rgba(0, 0, 0, 0.8);
+.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
 }
 
-.project_card:hover .project_card_hover {
-    @apply opacity-100 cursor-pointer;
+/* stack cards only slide up (no fade), so overlapping cards never show through each other */
+.js .stack-card[data-reveal] {
+    opacity: 1;
 }
 
-.bg-background {
-    background-color: hsl(0 0% 100%);
+@media (prefers-reduced-motion: no-preference) {
+    .js .stack-card[data-reveal]:not(.is-visible) {
+        transform: translateY(48px);
+    }
 }
 
-.meeting-btn {
-    z-index: 1000;
-    @apply transition-all relative p-3 bg-white shadow-lg rounded-full flex items-center justify-center border;
+/* ---------- hero intro (waits for html.is-loaded, set in main.js once fonts are ready) ---------- */
+.js [data-intro] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--d, 0ms);
 }
 
-.meeting-btn:hover img {
-    @apply transition-all scale-125;
+.is-loaded [data-intro] {
+    opacity: 1;
+    transform: none;
 }
 
-.meeting-btn::after {
+/* the portrait rises in like a curtain */
+.js .hero-photo img {
+    clip-path: inset(100% 0 0 0);
+    scale: 1.18;
+    transition: clip-path 1.3s cubic-bezier(0.7, 0, 0.2, 1) 0.25s, scale 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
+}
+
+.is-loaded .hero-photo img {
+    clip-path: inset(0);
+    scale: 1;
+}
+
+/* ---------- headings that slide up word by word ---------- */
+.js [data-split]:not(.split) {
+    opacity: 0;
+}
+
+.split .w {
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
+    /* clip only the bottom edge so italic and tall glyphs keep their overhang */
+    clip-path: inset(-0.5em -0.3em 0 -0.3em);
+}
+
+.split .w > span {
+    display: inline-block;
+    transform: translateY(125%);
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--sd, 0ms) + var(--wi, 0) * 45ms);
+}
+
+.split.is-in .w > span {
+    transform: none;
+}
+
+/* ---------- tech marquee ---------- */
+.marquee {
+    display: flex;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    animation: marquee 48s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-track li {
+    @apply flex items-center whitespace-nowrap font-display text-3xl font-semibold tracking-[-0.03em] text-fg-muted transition-colors duration-300 hover:text-fg sm:text-5xl;
+}
+
+.marquee-track li::after {
     content: '';
-    z-index: -1;
-    @apply animate-ping rounded-full bg-gray-200 w-full h-full top-0 left-0 absolute transition-all;
+    @apply mx-[0.8em] size-[0.3em] rounded-full bg-accent;
 }
 
-.meeting-btn:hover::after {
-    @apply animate-none bg-white transition-all;
+@keyframes marquee {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ---------- custom cursor + magnetic buttons (mouse only, added by main.js) ---------- */
+.has-cursor,
+.has-cursor * {
+    cursor: none !important;
+}
+
+/* .cursor sits exactly on the pointer; .cursor-blob is the visible shape inside it */
+.cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2147483647;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, scale 0.2s ease;
+}
+
+.cursor-visible .cursor {
+    opacity: 1;
+}
+
+.cursor.is-down {
+    scale: 0.85;
+}
+
+.cursor-blob {
+    position: absolute;
+    left: -7px;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: theme('colors.accent.DEFAULT');
+    box-shadow: 0 0 0 1.5px rgb(11 11 15 / 0.55);
+    /* transform (the stretch) is set every frame in main.js, so it is not transitioned */
+    transition: left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+        width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* over a link the dot grows into a pill beside the pointer (offsets set in main.js) */
+.cursor.has-label .cursor-blob {
+    left: var(--lx, 14px);
+    top: var(--ly, 14px);
+    width: var(--w, 80px);
+    height: 34px;
+}
+
+.cursor-label {
+    @apply absolute left-0 top-0 whitespace-nowrap px-3.5 font-display text-[13px] font-semibold leading-[34px] text-ink opacity-0;
+    transition: opacity 0.15s ease;
+}
+
+.cursor.has-label .cursor-label {
+    opacity: 1;
+    transition-delay: 0.12s;
+}
+
+/* on lime and light surfaces the blob turns dark so it stays visible */
+.cursor.is-dark .cursor-blob {
+    background: theme('colors.ink');
+    box-shadow: 0 0 0 1.5px rgb(200 245 96 / 0.6);
+}
+
+.cursor.is-dark .cursor-label {
+    @apply text-accent;
+}
+
+/* Cal.com booking popup open: hand the pointer back to the browser */
+.cal-open.has-cursor,
+.cal-open.has-cursor * {
+    cursor: auto !important;
+}
+
+.cal-open .cursor {
+    opacity: 0;
+}
+
+.magnetic {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, translate 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .js [data-intro] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .js .hero-photo img {
+        clip-path: none;
+        scale: 1;
+        transition: none;
+    }
+
+    .js [data-split]:not(.split) {
+        opacity: 1;
+    }
+
+    .marquee-track {
+        animation: none;
+    }
+
+    .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .tile-interactive:hover {
+        transform: none;
+    }
 }
