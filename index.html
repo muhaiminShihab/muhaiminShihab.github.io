@@ -590,9 +590,249 @@
         </section>
     </main>
 
-    <footer class="container-page flex flex-wrap justify-between gap-3 pb-10 pt-10 font-mono text-[13px] text-fg-muted">
-        <span>© <span data-year>2026</span> Md Muhaiminul Islam Shihab</span>
-        <span>Built with HTML + Tailwind · Hosted on GitHub Pages</span>
+    <footer>
+        <div class="container-page flex flex-wrap justify-between gap-3 pt-10 font-mono text-[13px] text-fg-muted">
+            <span>© <span data-year>2026</span> Md Muhaiminul Islam Shihab</span>
+            <span>Built with HTML + Tailwind · Hosted on GitHub Pages</span>
+        </div>
+        <!-- rooftop skyline: day in the light theme, night in the dark one (styles in input.css, draw-in in main.js) -->
+        <div class="skyline" data-skyline aria-hidden="true">
+            <svg class="skyline-art" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" focusable="false">
+            <g class="sk-day">
+            <circle class="sk-sun" cx="540" cy="78" r="18"/>
+            <g class="sk-flock">
+            <g transform="translate(0 70)"><path class="sk-bird" style="--d:0s" d="M0 0Q5-5 10 0Q15-5 20 0"/></g>
+            <g transform="translate(22 62)"><path class="sk-bird" style="--d:-0.25s" d="M0 0Q5-5 10 0Q15-5 20 0"/></g>
+            <g transform="translate(40 74)"><path class="sk-bird" style="--d:-0.5s" d="M0 0Q5-5 10 0Q15-5 20 0"/></g>
+            <g transform="translate(18 82)"><path class="sk-bird" style="--d:-0.15s" d="M0 0Q5-5 10 0Q15-5 20 0"/></g>
+            </g>
+            </g>
+            <g class="sk-night">
+            <circle class="sk-moon" cx="540" cy="78" r="17"/>
+            <circle class="sk-moon-cut" cx="549" cy="71" r="14"/>
+            <circle class="sk-star" cx="60" cy="40" r="1.3" style="--t:3.0s;--d:-0.0s"/>
+            <circle class="sk-star" cx="150" cy="92" r="1" style="--t:5.0s;--d:-1.3s"/>
+            <circle class="sk-star" cx="236" cy="30" r="1.4" style="--t:7.0s;--d:-2.6s"/>
+            <circle class="sk-star" cx="318" cy="70" r="1" style="--t:4.0s;--d:-3.9s"/>
+            <circle class="sk-star" cx="402" cy="36" r="1.2" style="--t:6.0s;--d:-5.2s"/>
+            <circle class="sk-star" cx="470" cy="112" r="1" style="--t:3.0s;--d:-6.5s"/>
+            <circle class="sk-star" cx="612" cy="36" r="1.3" style="--t:5.0s;--d:-7.8s"/>
+            <circle class="sk-star" cx="760" cy="58" r="1" style="--t:7.0s;--d:-9.1s"/>
+            <circle class="sk-star" cx="818" cy="26" r="1.2" style="--t:4.0s;--d:-10.4s"/>
+            <circle class="sk-star" cx="1004" cy="84" r="1" style="--t:6.0s;--d:-11.7s"/>
+            <circle class="sk-star" cx="1120" cy="40" r="1.4" style="--t:3.0s;--d:-13.0s"/>
+            <circle class="sk-star" cx="1180" cy="98" r="1" style="--t:5.0s;--d:-14.3s"/>
+            <circle class="sk-star" cx="1300" cy="52" r="1.3" style="--t:7.0s;--d:-15.6s"/>
+            <circle class="sk-star" cx="1388" cy="30" r="1" style="--t:4.0s;--d:-16.9s"/>
+            <circle class="sk-star" cx="1420" cy="104" r="1.2" style="--t:6.0s;--d:-18.2s"/>
+            </g>
+            <g class="sk-far">
+            <path d="M-2 300V176H40V156H86V172H124V182H300V160H340V150H372V170H410V190H560V170H590V160H640V176H700V190H856V164H900V150H940V158H980V190H1124V160H1160V146H1200V170H1270V190H1442V300Z"/>
+            <rect class="fw" x="10" y="184" width="5" height="7"/>
+            <rect class="fw on" x="22" y="184" width="5" height="7"/>
+            <rect class="fw" x="52" y="166" width="5" height="7"/>
+            <rect class="fw on" x="66" y="166" width="5" height="7"/>
+            <rect class="fw" x="52" y="178" width="5" height="7"/>
+            <rect class="fw" x="66" y="178" width="5" height="7"/>
+            <rect class="fw" x="348" y="160" width="5" height="7"/>
+            <rect class="fw" x="360" y="160" width="5" height="7"/>
+            <rect class="fw on" x="348" y="172" width="5" height="7"/>
+            <rect class="fw" x="360" y="172" width="5" height="7"/>
+            <rect class="fw" x="348" y="184" width="5" height="7"/>
+            <rect class="fw" x="596" y="168" width="5" height="7"/>
+            <rect class="fw" x="904" y="160" width="5" height="7"/>
+            <rect class="fw on" x="904" y="172" width="5" height="7"/>
+            <rect class="fw" x="1168" y="156" width="5" height="7"/>
+            <rect class="fw on" x="1182" y="156" width="5" height="7"/>
+            <rect class="fw" x="1168" y="168" width="5" height="7"/>
+            </g>
+            <g class="sk-front">
+            <rect x="0" y="196" width="132" height="110"/>
+            <rect x="-3" y="192" width="138" height="6"/>
+            <path d="M22 192L25 181H39L42 192Z"/>
+            <path class="sk-leaf" d="M32 181C27 173 21 173 17 166M32 181C34 171 40 168 46 165M32 181C31 173 31 168 33 160"/>
+            <path d="M94 192L96 184H108L110 192Z"/>
+            <path class="sk-leaf" d="M102 184C99 177 95 175 91 174M102 184C104 177 108 174 113 173M102 184V172"/>
+            <rect class="w on" x="16" y="214" width="20" height="24"/>
+            <rect class="w" x="52" y="214" width="20" height="24"/>
+            <rect class="w" x="88" y="214" width="20" height="24"/>
+            <rect class="w" x="16" y="252" width="20" height="24"/>
+            <rect class="w" x="52" y="252" width="20" height="24"/>
+            <rect class="w on b" style="--t:21s;--d:-6s" x="88" y="252" width="20" height="24"/>
+            <rect x="132" y="166" width="154" height="140"/>
+            <rect x="129" y="162" width="160" height="6"/>
+            <rect x="150" y="128" width="34" height="34" rx="4"/>
+            <path d="M156 128V123H178V128M150 140H184M150 151H184"/>
+            <rect x="194" y="134" width="30" height="28" rx="4"/>
+            <path d="M199 134V130H219V134M194 146H224"/>
+            <rect class="w" x="148" y="186" width="20" height="24"/>
+            <rect class="w on" x="184" y="186" width="20" height="24"/>
+            <rect class="w" x="220" y="186" width="20" height="24"/>
+            <rect class="w" x="256" y="186" width="20" height="24"/>
+            <rect class="w on b" style="--t:17s;--d:-11s" x="148" y="224" width="20" height="24"/>
+            <rect class="w" x="184" y="224" width="20" height="24"/>
+            <rect class="w" x="220" y="224" width="20" height="24"/>
+            <rect class="w" x="256" y="224" width="20" height="24"/>
+            <rect class="w" x="148" y="262" width="20" height="24"/>
+            <rect class="w" x="184" y="262" width="20" height="24"/>
+            <rect class="w" x="220" y="262" width="20" height="24"/>
+            <rect class="w" x="256" y="262" width="20" height="24"/>
+            <rect x="286" y="212" width="118" height="94"/>
+            <rect x="283" y="208" width="124" height="6"/>
+            <path d="M330 208V196M388 208V188"/>
+            <path d="M322 197L396 186L396 190L322 201Z"/>
+            <path d="M344 208V199H356V208"/>
+            <rect class="w" x="302" y="230" width="18" height="22"/>
+            <rect class="w on b" style="--t:24s;--d:-3s" x="340" y="230" width="18" height="22"/>
+            <rect class="w" x="378" y="230" width="18" height="22"/>
+            <rect class="w" x="302" y="266" width="18" height="22"/>
+            <rect class="w" x="340" y="266" width="18" height="22"/>
+            <rect class="w" x="378" y="266" width="18" height="22"/>
+            <rect x="404" y="150" width="144" height="156"/>
+            <rect x="401" y="146" width="150" height="6"/>
+            <path d="M420 146V104M532 146V104"/>
+            <path class="sk-wire" d="M420 108Q476 122 532 108"/>
+            <g transform="translate(451 114)"><path class="sk-cloth sk-lime" style="--t:4.6s;--d:-1s" d="M-13 0L-6-1Q0 3 6-1L13 0L16 8L10 10V26H-10V10L-16 8Z"/></g>
+            <g transform="translate(476 115)"><g class="sk-cloth" style="--t:5.4s;--d:-2.6s"><rect x="-11" y="0" width="22" height="34"/><path class="sk-check" d="M-11 9H11M-11 21H11M-4 0V34M5 0V34"/></g></g>
+            <g transform="translate(506 113)"><g class="sk-cloth" style="--t:4.1s;--d:-0.4s"><rect x="-8" y="0" width="16" height="18"/><path d="M-8 5H8M-6 18V21M-2 18V21M2 18V21M6 18V21"/></g></g>
+            <rect class="w" x="420" y="170" width="22" height="24"/>
+            <rect class="w on" x="464" y="170" width="22" height="24"/>
+            <rect class="w" x="508" y="170" width="22" height="24"/>
+            <rect class="w" x="420" y="208" width="22" height="24"/>
+            <rect class="w" x="464" y="208" width="22" height="24"/>
+            <rect class="w" x="508" y="208" width="22" height="24"/>
+            <rect class="w" x="420" y="246" width="22" height="24"/>
+            <rect class="w" x="464" y="246" width="22" height="24"/>
+            <rect class="w on b" style="--t:19s;--d:-14s" x="508" y="246" width="22" height="24"/>
+            <rect class="w" x="420" y="284" width="22" height="24"/>
+            <rect class="w" x="464" y="284" width="22" height="24"/>
+            <rect class="w" x="508" y="284" width="22" height="24"/>
+            <rect x="548" y="214" width="142" height="92"/>
+            <rect x="545" y="210" width="148" height="6"/>
+            <path d="M577 210A42 42 0 0 1 661 210Z"/>
+            <path d="M619 168V155"/><circle cx="619" cy="152" r="2.5"/>
+            <rect x="666" y="98" width="14" height="112"/>
+            <rect x="661" y="122" width="24" height="5"/>
+            <path d="M666 98L673 78L680 98Z"/><path d="M673 78V69"/><circle cx="673" cy="66" r="2"/>
+            <path class="w" d="M562 254V239A9 9 0 0 1 580 239V254Z"/>
+            <path class="w on" d="M598 254V239A9 9 0 0 1 616 239V254Z"/>
+            <path class="w" d="M634 254V239A9 9 0 0 1 652 239V254Z"/>
+            <path class="w" d="M668 254V239A9 9 0 0 1 686 239V254Z"/>
+            <path class="w" d="M562 290V275A9 9 0 0 1 580 275V290Z"/>
+            <path class="w" d="M598 290V275A9 9 0 0 1 616 275V290Z"/>
+            <path class="w" d="M634 290V275A9 9 0 0 1 652 275V290Z"/>
+            <path class="w on b" style="--t:26s;--d:-9s" d="M668 290V275A9 9 0 0 1 686 275V290Z"/>
+            <rect x="690" y="142" width="160" height="164"/>
+            <rect x="687" y="138" width="166" height="6"/>
+            <rect x="700" y="103" width="62" height="5"/>
+            <rect x="704" y="108" width="54" height="30"/>
+            <path d="M716 138V118H732V138"/>
+            <rect x="742" y="116" width="10" height="10"/>
+            <g class="sk-flyer"><circle cx="814" cy="117" r="4"/><path d="M814 121V130M814 130L810 138M814 130L818 138M814 124L822 116M814 124L808 129"/></g>
+            <path class="sk-wire sk-string" d="M822 116Q884 104 930 70"/>
+            <g class="sk-kite">
+            <path class="sk-lime" d="M930 40L952 64L930 100L908 64Z"/>
+            <path d="M930 40V100M908 64Q930 56 952 64"/>
+            <path class="sk-tail" d="M930 100C924 107 936 112 930 119C925 125 934 129 931 135M925 110L935 114M926 126L935 129"/>
+            </g>
+            <rect class="w" x="706" y="160" width="20" height="24"/>
+            <rect class="w on b" style="--t:15s;--d:-2s" x="744" y="160" width="20" height="24"/>
+            <rect class="w" x="782" y="160" width="20" height="24"/>
+            <rect class="w" x="820" y="160" width="20" height="24"/>
+            <rect class="w" x="706" y="198" width="20" height="24"/>
+            <rect class="w" x="744" y="198" width="20" height="24"/>
+            <rect class="w" x="782" y="198" width="20" height="24"/>
+            <rect class="w on" x="820" y="198" width="20" height="24"/>
+            <rect class="w" x="706" y="236" width="20" height="24"/>
+            <rect class="w" x="744" y="236" width="20" height="24"/>
+            <rect class="w" x="782" y="236" width="20" height="24"/>
+            <rect class="w" x="820" y="236" width="20" height="24"/>
+            <rect class="w" x="706" y="274" width="20" height="24"/>
+            <rect class="w" x="744" y="274" width="20" height="24"/>
+            <rect class="w on" x="782" y="274" width="20" height="24"/>
+            <rect class="w" x="820" y="274" width="20" height="24"/>
+            <rect x="850" y="180" width="134" height="126"/>
+            <rect x="847" y="176" width="140" height="6"/>
+            <rect x="864" y="144" width="32" height="32" rx="4"/>
+            <path d="M870 144V139H890V144M864 156H896M864 166H896"/>
+            <path d="M930 176V162"/>
+            <path d="M914 146Q916 166 942 166Z"/>
+            <path d="M922 158L934 148"/>
+            <rect class="w" x="866" y="198" width="22" height="24"/>
+            <rect class="w on" x="904" y="198" width="22" height="24"/>
+            <rect class="w" x="942" y="198" width="22" height="24"/>
+            <rect class="w" x="866" y="236" width="22" height="24"/>
+            <rect class="w" x="904" y="236" width="22" height="24"/>
+            <rect class="w" x="942" y="236" width="22" height="24"/>
+            <rect class="w on b" style="--t:22s;--d:-16s" x="866" y="274" width="22" height="24"/>
+            <rect class="w" x="904" y="274" width="22" height="24"/>
+            <rect class="w" x="942" y="274" width="22" height="24"/>
+            <rect x="984" y="124" width="134" height="182"/>
+            <rect x="981" y="120" width="140" height="6"/>
+            <g class="sk-tower">
+            <path d="M1030 120L1045 34M1064 120L1049 34M1033.8 98H1060.2M1037.7 76H1056.3M1041.5 54H1052.5M1030 120L1060.2 98M1064 120L1033.8 98M1033.8 98L1056.3 76M1060.2 98L1037.7 76M1037.7 76L1052.5 54M1056.3 76L1041.5 54M1047 34V24"/>
+            <rect x="1037" y="40" width="4" height="12"/><rect x="1053" y="40" width="4" height="12"/>
+            </g>
+            <circle class="sk-beacon" cx="1047" cy="20" r="3"/>
+            <rect class="w" x="1000" y="142" width="16" height="20"/>
+            <rect class="w on" x="1030" y="142" width="16" height="20"/>
+            <rect class="w" x="1060" y="142" width="16" height="20"/>
+            <rect class="w" x="1090" y="142" width="16" height="20"/>
+            <rect class="w" x="1000" y="174" width="16" height="20"/>
+            <rect class="w" x="1030" y="174" width="16" height="20"/>
+            <rect class="w" x="1060" y="174" width="16" height="20"/>
+            <rect class="w on b" style="--t:18s;--d:-5s" x="1090" y="174" width="16" height="20"/>
+            <rect class="w" x="1000" y="206" width="16" height="20"/>
+            <rect class="w" x="1030" y="206" width="16" height="20"/>
+            <rect class="w on" x="1060" y="206" width="16" height="20"/>
+            <rect class="w" x="1090" y="206" width="16" height="20"/>
+            <rect class="w" x="1000" y="238" width="16" height="20"/>
+            <rect class="w" x="1030" y="238" width="16" height="20"/>
+            <rect class="w" x="1060" y="238" width="16" height="20"/>
+            <rect class="w" x="1090" y="238" width="16" height="20"/>
+            <rect class="w" x="1000" y="270" width="16" height="20"/>
+            <rect class="w on b" style="--t:27s;--d:-20s" x="1030" y="270" width="16" height="20"/>
+            <rect class="w" x="1060" y="270" width="16" height="20"/>
+            <rect class="w" x="1090" y="270" width="16" height="20"/>
+            <rect x="1118" y="190" width="144" height="116"/>
+            <rect x="1115" y="186" width="150" height="6"/>
+            <path class="sk-leaf" d="M1237 176C1235 150 1240 128 1250 108M1250 108C1238 98 1224 100 1214 110M1250 108C1240 92 1230 88 1220 90M1250 108C1256 92 1266 88 1278 90M1250 108C1262 100 1276 102 1286 112M1250 108C1250 96 1252 88 1258 82"/>
+            <rect x="1226" y="176" width="22" height="10"/>
+            <rect class="w" x="1134" y="208" width="22" height="24"/>
+            <rect class="w on" x="1172" y="208" width="22" height="24"/>
+            <rect class="w" x="1210" y="208" width="22" height="24"/>
+            <rect class="w" x="1134" y="244" width="22" height="24"/>
+            <rect class="w" x="1172" y="244" width="22" height="24"/>
+            <rect class="w on b" style="--t:20s;--d:-8s" x="1210" y="244" width="22" height="24"/>
+            <rect class="w" x="1134" y="280" width="22" height="24"/>
+            <rect class="w" x="1172" y="280" width="22" height="24"/>
+            <rect class="w" x="1210" y="280" width="22" height="24"/>
+            <rect x="1262" y="160" width="178" height="146"/>
+            <rect x="1259" y="156" width="184" height="6"/>
+            <path d="M1272 140H1440M1274 140V156M1288 140V156M1302 140V156M1316 140V156M1330 140V156M1344 140V156M1358 140V156M1372 140V156M1386 140V156M1400 140V156M1414 140V156M1428 140V156"/>
+            <path d="M1294 156L1296 148H1308L1310 156Z"/>
+            <path class="sk-leaf" d="M1302 148C1298 141 1293 139 1289 138M1302 148C1305 141 1309 138 1314 137M1302 148V136"/>
+            <path d="M1394 156L1396 147H1410L1412 156Z"/>
+            <path class="sk-leaf" d="M1403 147C1398 139 1392 138 1387 134M1403 147C1406 138 1411 135 1417 133M1403 147C1402 139 1403 133 1406 127"/>
+            <rect class="w" x="1280" y="178" width="22" height="24"/>
+            <rect class="w on" x="1320" y="178" width="22" height="24"/>
+            <rect class="w" x="1360" y="178" width="22" height="24"/>
+            <rect class="w" x="1400" y="178" width="22" height="24"/>
+            <rect class="w" x="1280" y="214" width="22" height="24"/>
+            <rect class="w" x="1320" y="214" width="22" height="24"/>
+            <rect class="w" x="1360" y="214" width="22" height="24"/>
+            <rect class="w on b" style="--t:23s;--d:-12s" x="1400" y="214" width="22" height="24"/>
+            <rect class="w" x="1280" y="250" width="22" height="24"/>
+            <rect class="w" x="1320" y="250" width="22" height="24"/>
+            <rect class="w" x="1360" y="250" width="22" height="24"/>
+            <rect class="w" x="1400" y="250" width="22" height="24"/>
+            <path class="sk-wire" d="M286 170Q345 194 404 154M286 176Q345 202 404 160M1118 148Q1190 182 1262 166M1118 156Q1190 194 1262 174"/>
+            <g transform="translate(1170 166) scale(-1 1)"><g class="sk-hop" style="--d:-2s"><path class="sk-crow" d="M-12 0L-6-4C-4-8 0-10 3-10C5-11 6-10 7-9.5L10.5-9L6.5-7.5C7-5 5-2 1-1.5L-6-2Z"/><path d="M0-1.5V1M2.5-1.5V1"/></g></g>
+            <g transform="translate(1206 171)"><g class="sk-hop" style="--d:-7s"><path class="sk-crow" d="M-12 0L-6-4C-4-8 0-10 3-10C5-11 6-10 7-9.5L10.5-9L6.5-7.5C7-5 5-2 1-1.5L-6-2Z"/><path d="M0-1.5V1M2.5-1.5V1"/></g></g>
+            </g>
+            </svg>
+            <span class="skyline-scan"></span>
+        </div>
     </footer>
 
     <script src="./assets/js/main.js" defer></script>

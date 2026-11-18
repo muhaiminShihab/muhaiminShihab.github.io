@@ -353,6 +353,18 @@
         }).observe(document.body, { childList: true });
     }
 
+    // Footer skyline: draw it in the first time it scrolls into view, and pause its loops while it's off screen
+    const skyline = document.querySelector('[data-skyline]');
+    if (skyline) {
+        if (reduceMotion || !hasObserver) {
+            skyline.classList.add('is-drawn', 'is-live');
+        } else {
+            onceVisible([skyline], (el) => el.classList.add('is-drawn'), { threshold: 0.35 });
+            new IntersectionObserver(([entry]) => skyline.classList.toggle('is-live', entry.isIntersecting))
+                .observe(skyline);
+        }
+    }
+
     // Mobile menu
     const toggle = document.querySelector('[data-menu-toggle]');
     const menu = document.getElementById('mobile-menu');

@@ -369,6 +369,257 @@
     }
 }
 
+/* ---------- footer skyline ----------
+   A line drawing of rooftops. The light theme shows it by day (lime sun, a flock of birds);
+   the dark theme by night (moon, stars, lime windows that switch on and off).
+   Buildings are filled with the page color, so nearer ones hide the ones behind. */
+.skyline {
+    --sk-line: rgb(var(--fg-muted) / 0.5);
+    --sk-far: rgb(var(--line-strong));
+    --sk-face: rgb(var(--canvas));
+    --sk-win: rgb(200 245 96 / 0.7);
+    --sk-far-win: rgb(200 245 96 / 0.4);
+    position: relative;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+[data-theme='light'] .skyline {
+    --sk-line: rgb(var(--fg-muted) / 0.62);
+    --sk-win: var(--sk-face);
+    --sk-far-win: var(--sk-face);
+}
+
+/* height follows the 1440x300 drawing (20.833vw) between 180px and 440px; past either end
+   preserveAspectRatio="xMidYMax slice" crops it (the sides on phones, the sky on very wide screens) */
+.skyline-art {
+    display: block;
+    width: 100%;
+    height: clamp(180px, 20.833vw, 440px);
+}
+
+.sk-front {
+    fill: var(--sk-face);
+    stroke: var(--sk-line);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.sk-far {
+    fill: var(--sk-face);
+    stroke: var(--sk-far);
+    stroke-width: 1.25;
+}
+
+.sk-wire,
+.sk-leaf,
+.sk-tail,
+.sk-check {
+    fill: none;
+}
+
+.sk-wire {
+    stroke-width: 1;
+}
+
+.sk-tower {
+    stroke-width: 1.1;
+}
+
+.skyline .w {
+    stroke-width: 1.25;
+}
+
+.skyline .w.on {
+    fill: var(--sk-win);
+}
+
+.skyline .fw {
+    stroke-width: 1;
+}
+
+.skyline .fw.on {
+    fill: var(--sk-far-win);
+}
+
+.sk-lime,
+.sk-sun {
+    fill: theme('colors.accent.DEFAULT');
+}
+
+.sk-crow {
+    fill: var(--sk-line);
+    stroke: none;
+}
+
+.sk-beacon {
+    fill: var(--sk-win);
+}
+
+.sk-moon {
+    fill: rgb(var(--fg-soft) / 0.85);
+}
+
+.sk-moon-cut {
+    fill: var(--sk-face);
+}
+
+.sk-star {
+    fill: rgb(var(--fg-soft));
+}
+
+.sk-bird {
+    fill: none;
+    stroke: var(--sk-line);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+
+/* day pieces show in the light theme, night pieces in the dark one */
+.skyline .sk-day,
+[data-theme='light'] .skyline .sk-night {
+    display: none;
+}
+
+[data-theme='light'] .skyline .sk-day {
+    display: inline;
+}
+
+/* lime line that sweeps across while the drawing is revealed */
+.skyline-scan {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: rgb(var(--accent-fg));
+    box-shadow: 0 0 18px 2px rgb(var(--accent-fg) / 0.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* drawn in left to right the first time it scrolls into view (is-drawn set in main.js) */
+    .js .skyline-art {
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 2.4s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .js .skyline.is-drawn .skyline-art {
+        clip-path: inset(0);
+    }
+
+    .skyline.is-drawn .skyline-scan {
+        animation: sk-scan 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+
+    .sk-kite {
+        transform-origin: 930px 70px;
+        animation: sk-kite 7s ease-in-out infinite;
+    }
+
+    .sk-tail,
+    .sk-cloth {
+        transform-box: fill-box;
+        transform-origin: 50% 0;
+    }
+
+    .sk-tail {
+        animation: sk-tail 1.8s ease-in-out infinite alternate;
+    }
+
+    .sk-cloth {
+        animation: sk-sway var(--t, 5s) ease-in-out var(--d, 0s) infinite alternate;
+    }
+
+    .sk-flock {
+        animation: sk-flock 46s linear -8s infinite;
+    }
+
+    .sk-bird {
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+        animation: sk-flap 0.7s ease-in-out var(--d, 0s) infinite alternate;
+    }
+
+    .sk-hop {
+        animation: sk-hop 11s ease-out var(--d, 0s) infinite;
+    }
+
+    .skyline .w.b {
+        animation: sk-window var(--t, 18s) linear var(--d, 0s) infinite;
+    }
+
+    .sk-star {
+        animation: sk-twinkle var(--t, 4s) ease-in-out var(--d, 0s) infinite alternate;
+    }
+
+    html:not([data-theme='light']) .sk-beacon {
+        animation: sk-beacon 2.4s steps(1, end) infinite;
+    }
+
+    /* off screen: hold every loop (is-live toggled in main.js) */
+    .js .skyline:not(.is-live) .skyline-art * {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes sk-scan {
+    0% { left: 0; opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes sk-kite {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes sk-tail {
+    from { transform: skewX(-10deg); }
+    to { transform: skewX(10deg); }
+}
+
+@keyframes sk-sway {
+    from { transform: rotate(-4deg); }
+    to { transform: rotate(4deg); }
+}
+
+/* crosses in about 30s, then the sky stays empty for a while */
+@keyframes sk-flock {
+    0% { transform: translate(-120px, 0); }
+    66% { transform: translate(1560px, -28px); }
+    100% { transform: translate(1560px, -28px); }
+}
+
+@keyframes sk-flap {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(0.35); }
+}
+
+@keyframes sk-hop {
+    0%, 88%, 94%, 100% { transform: translateY(0); }
+    91% { transform: translateY(-5px); }
+    97% { transform: translateY(-2px); }
+}
+
+@keyframes sk-window {
+    0%, 56% { fill-opacity: 1; }
+    58%, 90% { fill-opacity: 0; }
+    92%, 100% { fill-opacity: 1; }
+}
+
+@keyframes sk-twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+@keyframes sk-beacon {
+    0% { opacity: 1; }
+    50% { opacity: 0.15; }
+}
+
 /* ---------- hover label + magnetic buttons (mouse only, added by main.js) ---------- */
 /* The normal pointer stays visible. .cursor trails the pointer; .cursor-blob is the
    label pill beside it, shown only over links and buttons */
