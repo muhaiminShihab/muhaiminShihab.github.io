@@ -35,7 +35,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- styles -->
-    <script>document.documentElement.classList.add('js');</script>
+    <!-- theme: saved choice, else the system setting; runs before CSS so there is no flash -->
+    <script>
+        (function () {
+            var root = document.documentElement, theme;
+            root.classList.add('js');
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            root.dataset.theme = theme;
+            document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#F3F3EF' : '#0B0B0F';
+        })();
+    </script>
     <link href="./assets/css/main.css" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -52,7 +62,7 @@
     </script>
 </head>
 
-<body class="bg-ink text-fg">
+<body class="bg-canvas text-fg">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:font-semibold focus:text-ink">Skip to content</a>
 
     <!-- navigation -->
@@ -72,11 +82,16 @@
                 </ul>
 
                 <div class="flex items-center gap-2">
+                    <button type="button" class="icon-btn" data-theme-toggle>
+                        <span class="sr-only">Switch theme</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-sun"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+                    </button>
                     <a href="https://cal.com/muhaiminshihab/30min" target="_blank" rel="noopener" data-cal-link="muhaiminshihab/30min" data-cal-namespace="booking" class="btn-primary hidden px-5 py-3 text-[15px] sm:inline-flex">
                         <span>Book a call</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                     </a>
-                    <button type="button" class="flex size-11 items-center justify-center rounded-full border border-line-strong text-fg transition-colors hover:bg-white/5 md:hidden" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+                    <button type="button" class="icon-btn md:hidden" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
                         <span class="sr-only">Open menu</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg>
                     </button>
@@ -84,10 +99,10 @@
 
                 <div id="mobile-menu" hidden class="absolute inset-x-0 top-full mt-2 rounded-3xl border border-line bg-surface p-2 shadow-2xl md:hidden">
                     <ul class="flex flex-col">
-                        <li><a href="#work" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-white/5 hover:text-fg">Work</a></li>
-                        <li><a href="#experience" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-white/5 hover:text-fg">Experience</a></li>
-                        <li><a href="#about" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-white/5 hover:text-fg">About</a></li>
-                        <li><a href="#contact" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-white/5 hover:text-fg">Contact</a></li>
+                        <li><a href="#work" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-wash/5 hover:text-fg">Work</a></li>
+                        <li><a href="#experience" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-wash/5 hover:text-fg">Experience</a></li>
+                        <li><a href="#about" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-wash/5 hover:text-fg">About</a></li>
+                        <li><a href="#contact" class="block rounded-2xl px-4 py-3.5 text-lg text-fg-soft hover:bg-wash/5 hover:text-fg">Contact</a></li>
                     </ul>
                     <a href="https://cal.com/muhaiminshihab/30min" target="_blank" rel="noopener" data-cal-link="muhaiminshihab/30min" data-cal-namespace="booking" class="btn-primary mt-2 w-full">Book a 30-min call</a>
                 </div>
@@ -100,13 +115,13 @@
         <section id="top" aria-labelledby="hero-title" class="flex flex-col gap-4 pt-6">
             <div class="flex flex-col gap-4 lg:flex-row">
                 <div class="tile spotlight flex flex-1 flex-col justify-between gap-10 p-7 sm:p-10 lg:min-h-[540px] lg:p-14">
-                    <p class="inline-flex items-center gap-2.5 self-start rounded-full border border-[#2E2E37] px-3.5 py-2 font-mono text-[13px] text-fg-soft" data-intro>
+                    <p class="inline-flex items-center gap-2.5 self-start rounded-full border border-line-mid px-3.5 py-2 font-mono text-[13px] text-fg-soft" data-intro>
                         <span class="size-2 rounded-full bg-accent" aria-hidden="true"></span>
                         <span>Software Engineer at Qtec Solution</span>
                     </p>
                     <div class="flex flex-col gap-6">
                         <h1 id="hero-title" data-split="intro" style="--sd: 120ms" class="max-w-[13ch] font-display text-[42px] font-semibold leading-none tracking-[-0.035em] sm:text-6xl lg:text-[80px]">
-                            I build web products teams <span class="text-accent">actually run on.</span>
+                            I build web products teams <span class="hl">actually run on.</span>
                         </h1>
                         <p class="max-w-[560px] text-lg text-fg-muted sm:text-[19px]" data-intro style="--d: 650ms">
                             I'm Md Muhaiminul Islam Shihab, a full-stack developer from Bangladesh. Laravel, Livewire and Filament on the back end; Vue, Nuxt, React and Next on the front.
@@ -126,7 +141,7 @@
 
                 <figure class="tile hero-photo min-h-[420px] lg:min-h-[540px] lg:w-[34%]">
                     <img src="./assets/images/author_2.webp" alt="Portrait of Shihab smiling, wearing glasses and a black t-shirt" width="900" height="1199" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-[50%_30%]">
-                    <figcaption data-intro style="--d: 1100ms" class="absolute inset-x-4 bottom-4 flex items-center justify-between gap-2 rounded-2xl bg-ink/85 px-4 py-3 font-mono text-[13px] text-fg-soft backdrop-blur-sm">
+                    <figcaption data-intro style="--d: 1100ms" class="absolute inset-x-4 bottom-4 flex items-center justify-between gap-2 rounded-2xl bg-canvas/85 px-4 py-3 font-mono text-[13px] text-fg-soft backdrop-blur-sm">
                         <span class="inline-flex items-center gap-2">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
                             <span>Bangladesh</span>
@@ -204,7 +219,7 @@
             <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end" data-reveal>
                 <div class="flex max-w-2xl flex-col gap-2">
                     <span class="eyebrow">01 / Work</span>
-                    <h2 id="work-title" data-split class="section-title text-balance">Work that's <span class="text-accent">live in production</span></h2>
+                    <h2 id="work-title" data-split class="section-title text-balance">Work that's <span class="hl">live in production</span></h2>
                 </div>
                 <p class="max-w-sm text-fg-muted md:text-right">Agency sites, a research platform, SaaS and e-commerce I built and shipped. They're all live, so open any of them and try it yourself, except the one under NDA.</p>
             </div>
@@ -376,7 +391,7 @@
             </div>
             <ol class="flex flex-1 flex-col">
                 <li class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line py-6" data-reveal>
-                    <img src="./assets/images/experience/qtec_logo.svg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover">
+                    <img src="./assets/images/experience/qtec_logo.svg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover ring-1 ring-line">
                     <div class="flex min-w-[200px] flex-1 flex-col gap-0.5">
                         <div class="flex flex-wrap items-center gap-2.5">
                             <h3 class="font-display text-[22px] font-semibold">Qtec Solution Limited</h3>
@@ -387,7 +402,7 @@
                     <p class="w-full pl-[72px] font-mono text-sm text-fg-soft sm:w-auto sm:pl-0">Nov 2023 – Present</p>
                 </li>
                 <li class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line py-6" data-reveal style="--d: 80ms">
-                    <img src="./assets/images/experience/nagadhat_bangladesh_ltd_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover">
+                    <img src="./assets/images/experience/nagadhat_bangladesh_ltd_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover ring-1 ring-line">
                     <div class="flex min-w-[200px] flex-1 flex-col gap-0.5">
                         <h3 class="font-display text-[22px] font-semibold">Nagadhat Bangladesh Limited</h3>
                         <p class="text-fg-muted">Web Developer</p>
@@ -395,7 +410,7 @@
                     <p class="w-full pl-[72px] font-mono text-sm text-fg-soft sm:w-auto sm:pl-0">Sep 2022 – Oct 2023</p>
                 </li>
                 <li class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line py-6" data-reveal style="--d: 160ms">
-                    <img src="./assets/images/experience/rexoit_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover">
+                    <img src="./assets/images/experience/rexoit_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover ring-1 ring-line">
                     <div class="flex min-w-[200px] flex-1 flex-col gap-0.5">
                         <h3 class="font-display text-[22px] font-semibold">Rexo IT Limited</h3>
                         <p class="text-fg-muted">Web Developer</p>
@@ -403,7 +418,7 @@
                     <p class="w-full pl-[72px] font-mono text-sm text-fg-soft sm:w-auto sm:pl-0">Sep 2021 – Aug 2022</p>
                 </li>
                 <li class="flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-line py-6" data-reveal style="--d: 240ms">
-                    <img src="./assets/images/experience/trendup_it_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover">
+                    <img src="./assets/images/experience/trendup_it_logo.jpeg" alt="" width="52" height="52" loading="lazy" class="size-[52px] rounded-[14px] bg-white object-cover ring-1 ring-line">
                     <div class="flex min-w-[200px] flex-1 flex-col gap-0.5">
                         <h3 class="font-display text-[22px] font-semibold">Trendup Institute of IT</h3>
                         <p class="text-fg-muted">Web Design Instructor</p>
@@ -434,7 +449,7 @@
                 <span class="font-mono text-[13px]">04 / Contact</span>
                 <h2 id="contact-title" data-split class="font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-7xl lg:text-[88px]">Have a product in mind? Let's build it.</h2>
                 <div class="flex flex-wrap gap-3">
-                    <a href="https://cal.com/muhaiminshihab/30min" target="_blank" rel="noopener" data-cal-link="muhaiminshihab/30min" data-cal-namespace="booking" class="btn bg-ink text-fg hover:bg-[#23232B]">
+                    <a href="https://cal.com/muhaiminshihab/30min" target="_blank" rel="noopener" data-cal-link="muhaiminshihab/30min" data-cal-namespace="booking" class="btn-ink">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
                         <span>Book a 30-min call</span>
                     </a>

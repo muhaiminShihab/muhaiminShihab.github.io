@@ -3,12 +3,50 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
+    /* ---------- theme tokens (RGB channels, read by tailwind.config.js) ----------
+       Dark is the default. The inline script in <head> sets html[data-theme] from the
+       saved choice or the system setting before first paint, so there is no flash. */
+    :root,
+    [data-theme='dark'] {
         color-scheme: dark;
+        --canvas: 11 11 15;
+        --surface: 18 18 24;
+        --raised: 28 28 36;
+        --line: 38 38 46;
+        --line-mid: 46 46 55;
+        --line-strong: 63 63 70;
+        --fg: 244 244 245;
+        --fg-soft: 212 212 216;
+        --fg-muted: 161 161 170;
+        --wash: 255 255 255;
+        --accent-fg: 200 245 96;
+        --tile-shadow: none;
+        --spot: rgb(200 245 96 / 0.09);
+        --stack-shadow: 0 -18px 48px -20px rgb(0 0 0 / 0.75);
+    }
+
+    /* Light: warm paper canvas, white tiles, near-black type. Lime stays the brand fill
+       (buttons, contact block, dots); where it would be text it turns deep green or a highlighter. */
+    [data-theme='light'] {
+        color-scheme: light;
+        --canvas: 243 243 239;
+        --surface: 255 255 255;
+        --raised: 240 240 235;
+        --line: 228 228 222;
+        --line-mid: 218 218 211;
+        --line-strong: 196 196 188;
+        --fg: 11 11 15;
+        --fg-soft: 55 55 62;
+        --fg-muted: 96 96 106;
+        --wash: 11 11 15;
+        --accent-fg: 77 124 15;
+        --tile-shadow: 0 1px 2px rgb(11 11 15 / 0.04), 0 8px 24px -12px rgb(11 11 15 / 0.08);
+        --spot: rgb(200 245 96 / 0.32);
+        --stack-shadow: 0 0 0 1px rgb(11 11 15 / 0.06), 0 -18px 48px -24px rgb(11 11 15 / 0.28);
     }
 
     html {
-        @apply bg-ink font-sans text-fg antialiased;
+        @apply bg-canvas font-sans text-fg antialiased;
         scroll-behavior: smooth;
         scroll-padding-top: 6rem;
     }
@@ -18,8 +56,13 @@
     }
 
     :focus-visible {
-        outline: 2px solid theme('colors.accent.DEFAULT');
+        outline: 2px solid rgb(var(--accent-fg));
         outline-offset: 3px;
+    }
+
+    /* the theme toggle needs JS, so hide it when JS is off */
+    html:not(.js) [data-theme-toggle] {
+        display: none;
     }
 }
 
@@ -30,6 +73,7 @@
 
     .tile {
         @apply relative overflow-hidden rounded-tile border border-line bg-surface;
+        box-shadow: var(--tile-shadow);
     }
 
     .tile-interactive {
@@ -38,7 +82,7 @@
 
     .tile-interactive:hover {
         transform: translateY(-2px);
-        border-color: theme('colors.line.strong');
+        border-color: rgb(var(--line-strong));
     }
 
     /* soft accent glow that follows the cursor (position set in main.js) */
@@ -50,7 +94,7 @@
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.3s ease;
-        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(200 245 96 / 0.09), transparent 60%);
+        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--spot), transparent 60%);
     }
 
     .spotlight:hover::before {
@@ -75,11 +119,11 @@
     }
 
     .chip {
-        @apply rounded-full border border-[#2E2E37] bg-raised px-3 py-1.5 text-sm;
+        @apply rounded-full border border-line-mid bg-raised px-3 py-1.5 text-sm;
     }
 
     .tag {
-        @apply rounded-full border border-[#2E2E37] px-2.5 py-1 font-mono text-xs text-fg-soft;
+        @apply rounded-full border border-line-mid px-2.5 py-1 font-mono text-xs text-fg-soft;
     }
 
     .btn {
@@ -91,18 +135,32 @@
     }
 
     .btn-ghost {
-        @apply btn border border-line-strong font-medium text-fg hover:border-fg-muted hover:bg-white/5;
+        @apply btn border border-line-strong font-medium text-fg hover:border-fg-muted hover:bg-wash/5;
+    }
+
+    /* near-black button for lime surfaces; same in both themes */
+    .btn-ink {
+        @apply btn bg-ink text-zinc-100 hover:bg-[#23232B];
+    }
+
+    /* highlighted words in headings: lime text on dark, a lime highlighter stroke on light */
+    .hl {
+        color: rgb(var(--accent-fg));
+    }
+
+    .icon-btn {
+        @apply relative flex size-11 shrink-0 items-center justify-center rounded-full border border-line-strong text-fg transition-colors hover:bg-wash/5;
     }
 
     .nav-link {
-        @apply rounded-full px-4 py-3 text-[15px] text-fg-soft transition-colors hover:bg-white/5 hover:text-fg;
+        @apply rounded-full px-4 py-3 text-[15px] text-fg-soft transition-colors hover:bg-wash/5 hover:text-fg;
     }
 
     /* project cards that stack on top of each other while scrolling (#work) */
     .stack-card {
         @apply relative grid gap-6 rounded-tile p-5 text-ink sm:p-7 md:grid-cols-[1fr_1.05fr] md:gap-10 md:p-8;
         background-color: var(--card, theme('colors.accent.DEFAULT'));
-        box-shadow: 0 -18px 48px -20px rgb(0 0 0 / 0.75);
+        box-shadow: var(--stack-shadow);
         /* --p (0 → 1) is how far the next card has slid over this one; set in main.js */
         transform-origin: 50% 0;
         scale: calc(1 - var(--p, 0) * 0.08);
@@ -113,12 +171,15 @@
         position: absolute;
         inset: 0;
         border-radius: inherit;
-        background: theme('colors.ink');
+        /* the covered card fades back into the page */
+        background: rgb(var(--canvas));
         opacity: calc(var(--p, 0) * 0.5);
         pointer-events: none;
     }
 
-    .stack-card :focus-visible {
+    /* lime and pastel surfaces: a dark focus ring stays visible */
+    .stack-card :focus-visible,
+    .bg-accent :focus-visible {
         outline-color: theme('colors.ink');
     }
 
@@ -220,6 +281,54 @@
 
 .split.is-in .w > span {
     transform: none;
+}
+
+/* ---------- light theme extras ---------- */
+/* highlighter stroke behind .hl words; it sweeps in once a split heading's words have risen */
+[data-theme='light'] .hl {
+    color: inherit;
+    background-image: linear-gradient(theme('colors.accent.DEFAULT'), theme('colors.accent.DEFAULT'));
+    background-repeat: no-repeat;
+    background-position: 0 74%;
+    background-size: 100% 0.4em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+[data-theme='light'] .split .hl {
+    transition: background-size 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+    transition-delay: calc(var(--sd, 0ms) + 450ms);
+}
+
+[data-theme='light'] .split:not(.is-in) .hl {
+    background-size: 0 0.4em;
+}
+
+/* theme toggle: show the sun on dark (switch to light) and the moon on light */
+[data-theme-toggle] svg {
+    transition: rotate 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), scale 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.3s ease;
+}
+
+[data-theme-toggle] .icon-moon,
+[data-theme='light'] [data-theme-toggle] .icon-sun {
+    position: absolute;
+    opacity: 0;
+    rotate: -90deg;
+    scale: 0.5;
+}
+
+[data-theme='light'] [data-theme-toggle] .icon-moon {
+    position: static;
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1;
+}
+
+/* theme switch: the new theme spreads out from the toggle in a circle (clip-path set in main.js) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
 
 /* ---------- tech marquee ---------- */
@@ -361,6 +470,10 @@
 
     .marquee-track {
         animation: none;
+    }
+
+    [data-theme-toggle] svg {
+        transition: none;
     }
 
     .js [data-reveal] {

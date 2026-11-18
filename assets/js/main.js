@@ -22,6 +22,60 @@
         elements.forEach((el) => observer.observe(el));
     };
 
+    // Theme: the inline script in <head> already applied the saved or system theme.
+    // The toggle saves an explicit choice; with no saved choice the page follows the system.
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const lightQuery = window.matchMedia('(prefers-color-scheme: light)');
+    const themeToggles = document.querySelectorAll('[data-theme-toggle]');
+    const savedTheme = () => {
+        try {
+            const value = localStorage.getItem('theme');
+            return value === 'light' || value === 'dark' ? value : null;
+        } catch {
+            return null;
+        }
+    };
+    const syncThemeUI = () => {
+        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        themeToggles.forEach((button) => {
+            const label = button.querySelector('.sr-only');
+            if (label) label.textContent = `Switch to ${next} theme`;
+            button.dataset.cursor = next === 'light' ? 'Light mode' : 'Dark mode';
+        });
+    };
+    const applyTheme = (theme) => {
+        root.dataset.theme = theme;
+        if (themeMeta) themeMeta.content = theme === 'light' ? '#F3F3EF' : '#0B0B0F';
+        syncThemeUI();
+        document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    };
+    // the new theme grows out of the button in a circle (where View Transitions are supported)
+    const switchTheme = (theme, from) => {
+        if (!document.startViewTransition || reduceMotion || !from) {
+            applyTheme(theme);
+            return;
+        }
+        const rect = from.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const radius = Math.hypot(Math.max(cx, window.innerWidth - cx), Math.max(cy, window.innerHeight - cy));
+        document.startViewTransition(() => applyTheme(theme)).ready.then(() => {
+            root.animate(
+                { clipPath: [`circle(0px at ${cx}px ${cy}px)`, `circle(${radius}px at ${cx}px ${cy}px)`] },
+                { duration: 650, easing: 'cubic-bezier(0.7, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' },
+            );
+        }).catch(() => {});
+    };
+    syncThemeUI();
+    themeToggles.forEach((button) => button.addEventListener('click', () => {
+        const theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('theme', theme); } catch { /* private mode: still switch for this page */ }
+        switchTheme(theme, button);
+    }));
+    lightQuery.addEventListener('change', (event) => {
+        if (!savedTheme()) applyTheme(event.matches ? 'light' : 'dark');
+    });
+
     // Keep "years of experience" and the footer year current
     const careerStart = new Date(2020, 9, 1); // Oct 2020
     const years = Math.floor((Date.now() - careerStart) / (365.25 * 24 * 60 * 60 * 1000));
@@ -226,15 +280,22 @@
                 requestAnimationFrame(move);
             }
         }, { passive: true });
+        let hovered = null;
         document.addEventListener('pointerover', (event) => {
             const target = event.target;
             if (!(target instanceof Element)) return;
+            hovered = target;
             // the cursor can't follow the pointer into an iframe, so step aside
             root.classList.toggle('cursor-visible', shown && target.tagName !== 'IFRAME');
             const link = target.closest('a[href], button, [data-cursor]');
             setLabel(link ? labelFor(link) : '');
             // dark blob on light or lime surfaces so it stays visible
             cursor.classList.toggle('is-dark', Boolean(target.closest('.bg-accent, .btn-primary, .stack-card')));
+        });
+        // the toggle's label ("Light mode" / "Dark mode") changes once clicked
+        document.addEventListener('themechange', () => {
+            const link = hovered?.closest('a[href], button, [data-cursor]');
+            setLabel(link ? labelFor(link) : '');
         });
         root.addEventListener('mouseleave', () => {
             shown = false;
@@ -264,11 +325,12 @@
         /* eslint-enable */
         Cal('init', 'booking', { origin: 'https://app.cal.com' });
         Cal.ns.booking('ui', {
-            theme: 'dark',
-            cssVarsPerTheme: { dark: { 'cal-brand': '#C8F560' } },
+            theme: root.dataset.theme === 'light' ? 'light' : 'dark',
+            cssVarsPerTheme: { dark: { 'cal-brand': '#C8F560' }, light: { 'cal-brand': '#0B0B0F' } },
             hideEventTypeDetails: false,
             layout: 'month_view',
         });
+        document.addEventListener('themechange', (event) => Cal.ns.booking('ui', { theme: event.detail.theme }));
 
         // Build the popup hidden in the background the first time someone hovers, focuses or touches
         // a booking link, so the click opens it instantly instead of loading the scheduler from scratch
