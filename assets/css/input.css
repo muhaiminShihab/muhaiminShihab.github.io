@@ -471,8 +471,19 @@
     animation-play-state: paused;
 }
 
+/* logos are sized in em, so the dot spacing below scales with them;
+   --s (set per logo in index.html) shrinks wide logos to the area of a square one */
 .marquee-track li {
-    @apply flex items-center whitespace-nowrap font-display text-3xl font-semibold tracking-[-0.03em] text-fg-muted transition-colors duration-300 hover:text-fg sm:text-5xl;
+    @apply flex items-center text-3xl sm:text-5xl;
+}
+
+.marquee-track svg {
+    @apply w-auto fill-current text-fg-muted transition-colors duration-300;
+    height: calc(var(--s, 1) * 1em);
+}
+
+.marquee-track svg:hover {
+    color: var(--brand);
 }
 
 .marquee-track li::after {
