@@ -353,6 +353,49 @@
         }).observe(document.body, { childList: true });
     }
 
+    // Hero caption: live time in Bangladesh (UTC+6, no daylight saving), plus how far ahead of the
+    // visitor that is, or that it's night here. Without JS the caption keeps its static "GMT+6".
+    const localTime = document.querySelector('[data-local-time]');
+    if (localTime) {
+        const clock = localTime.querySelector('[data-lt-clock]');
+        const note = localTime.querySelector('[data-lt-note]');
+        const BD_OFFSET = 6 * 60;
+        const formatGap = (minutes) => {
+            const h = Math.floor(minutes / 60);
+            const m = minutes % 60;
+            return [h && `${h}h`, m && `${m}m`].filter(Boolean).join(' ');
+        };
+        const updateLocalTime = () => {
+            const now = new Date();
+            const bd = new Date(now.getTime() + BD_OFFSET * 60000);
+            const hours = bd.getUTCHours();
+            const minutes = String(bd.getUTCMinutes()).padStart(2, '0');
+            const period = hours < 12 ? 'AM' : 'PM';
+            const hour12 = hours % 12 || 12;
+            const night = hours >= 23 || hours < 7;
+
+            clock.dateTime = `${String(hours).padStart(2, '0')}:${minutes}+06:00`;
+            clock.innerHTML = `${hour12}<span class="lt-colon">:</span>${minutes} ${period}`;
+            clock.hidden = false;
+
+            // positive: Bangladesh is ahead of the visitor
+            const gap = BD_OFFSET + now.getTimezoneOffset();
+            const relation = gap === 0 ? 'same time as you' : `${formatGap(Math.abs(gap))} ${gap > 0 ? 'ahead of' : 'behind'} you`;
+            note.textContent = night ? 'back in the morning' : relation;
+            localTime.classList.toggle('is-night', night);
+            localTime.title = `It's ${hour12}:${minutes} ${period} in Bangladesh, ${relation}${night ? '. Replies in the morning.' : ''}`;
+        };
+        updateLocalTime();
+        // tick on the minute, and catch up when the tab comes back (background timers get throttled)
+        setTimeout(() => {
+            updateLocalTime();
+            setInterval(updateLocalTime, 60000);
+        }, 60000 - (Date.now() % 60000));
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) updateLocalTime();
+        });
+    }
+
     // Footer skyline: draw it in the first time it scrolls into view, and pause its loops while it's off screen
     const skyline = document.querySelector('[data-skyline]');
     if (skyline) {

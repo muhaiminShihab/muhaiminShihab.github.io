@@ -263,6 +263,30 @@
     scale: 1;
 }
 
+/* ---------- hero caption: live local time (filled in by main.js) ---------- */
+/* the pin turns into a moon at night in Bangladesh */
+.lt-moon,
+.is-night .lt-pin {
+    display: none;
+}
+
+.is-night .lt-moon {
+    display: block;
+}
+
+/* the clock's colon blinks once a second */
+@media (prefers-reduced-motion: no-preference) {
+    .lt-colon {
+        animation: lt-blink 1s steps(1, end) infinite;
+    }
+}
+
+@keyframes lt-blink {
+    50% {
+        opacity: 0.2;
+    }
+}
+
 /* ---------- headings that slide up word by word ---------- */
 .js [data-split]:not(.split) {
     opacity: 0;
