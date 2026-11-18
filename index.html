@@ -116,7 +116,7 @@
             <div class="flex flex-col gap-4 lg:flex-row">
                 <div class="tile spotlight flex flex-1 flex-col justify-between gap-10 p-7 sm:p-10 lg:min-h-[540px] lg:p-14">
                     <p class="inline-flex items-center gap-2.5 self-start rounded-full border border-line-mid px-3.5 py-2 font-mono text-[13px] text-fg-soft" data-intro>
-                        <span class="size-2 rounded-full bg-accent" aria-hidden="true"></span>
+                        <span class="live-dot" aria-hidden="true"></span>
                         <span>Software Engineer at Qtec Agency</span>
                     </p>
                     <div class="flex flex-col gap-6">
@@ -209,10 +209,27 @@
                     </dl>
                 </div>
             </div>
-            <div class="tile py-6 sm:py-8" data-reveal style="--d: 400ms">
-                <div class="marquee">
-                    <ul class="marquee-track" aria-label="Technologies I work with"><li>Laravel</li><li>PHP</li><li>Livewire</li><li>Filament</li><li>Vue</li><li>Nuxt</li><li>React</li><li>Next.js</li><li>React Native</li><li>Tailwind CSS</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li></ul>
-                    <ul class="marquee-track" aria-hidden="true"><li>Laravel</li><li>PHP</li><li>Livewire</li><li>Filament</li><li>Vue</li><li>Nuxt</li><li>React</li><li>Next.js</li><li>React Native</li><li>Tailwind CSS</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li></ul>
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
+                <!-- what I'm on right now; the steam rises from the cup (styles in input.css) -->
+                <div class="tile flex items-center gap-5 p-5 sm:px-7 sm:py-6 lg:col-span-4" data-reveal style="--d: 400ms">
+                    <svg class="now-cup" width="64" height="64" viewBox="0 0 56 56" aria-hidden="true">
+                        <path class="now-steam" d="M20 22C17 18 23 15 20 10" />
+                        <path class="now-steam" d="M26 22C23 17 29 14 26 7" />
+                        <path class="now-steam" d="M32 22C29 18 35 15 32 10" />
+                        <path class="now-cup-body" d="M13 27H39V35C39 42 34 47 26 47C18 47 13 42 13 35Z" />
+                        <ellipse class="now-tea" cx="26" cy="27.5" rx="11" ry="2" />
+                        <path class="now-cup-line" d="M39 30C46 30 46 40 38.5 40M9 50Q26 54 43 50" />
+                    </svg>
+                    <div class="flex flex-col gap-1">
+                        <span class="label">Now</span>
+                        <p class="font-display text-lg font-semibold leading-snug tracking-[-0.01em]">Building client products at Qtec Agency</p>
+                    </div>
+                </div>
+                <div class="tile flex flex-col justify-center py-6 sm:py-8 lg:col-span-8" data-reveal style="--d: 460ms">
+                    <div class="marquee">
+                        <ul class="marquee-track" aria-label="Technologies I work with"><li>Laravel</li><li>PHP</li><li>Livewire</li><li>Filament</li><li>Vue</li><li>Nuxt</li><li>React</li><li>Next.js</li><li>React Native</li><li>Tailwind CSS</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li></ul>
+                        <ul class="marquee-track" aria-hidden="true"><li>Laravel</li><li>PHP</li><li>Livewire</li><li>Filament</li><li>Vue</li><li>Nuxt</li><li>React</li><li>Next.js</li><li>React Native</li><li>Tailwind CSS</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li></ul>
+                    </div>
                 </div>
             </div>
         </section>
