@@ -198,8 +198,8 @@
             });
         });
 
-        // Blob cursor: a lime dot that stretches when it moves fast and turns into a
-        // label ("Visit ↗", "Book a call", "Jump ↓"...) saying what a click will do
+        // Hover label: the normal pointer stays, and over a link a lime pill pops in beside it
+        // saying what a click will do ("Visit ↗", "Book a call", "Jump ↓"...)
         const cursor = document.createElement('div');
         const blob = document.createElement('div');
         const label = document.createElement('span');
@@ -235,19 +235,10 @@
         let shown = false;
         let current = '';
         const move = () => {
-            const prevX = blobX;
-            const prevY = blobY;
             blobX += (x - blobX) * 0.35;
             blobY += (y - blobY) * 0.35;
             cursor.style.translate = `${blobX}px ${blobY}px`;
-            // stretch along the direction of travel, more the faster it goes
-            const vx = blobX - prevX;
-            const vy = blobY - prevY;
-            const stretch = current ? 0 : Math.min(Math.hypot(vx, vy) / 30, 0.7);
-            blob.style.transform = stretch > 0.01
-                ? `rotate(${Math.atan2(vy, vx)}rad) scale(${1 + stretch}, ${1 - stretch * 0.45})`
-                : '';
-            moving = Math.abs(x - blobX) > 0.1 || Math.abs(y - blobY) > 0.1 || stretch > 0.01;
+            moving = Math.abs(x - blobX) > 0.1 || Math.abs(y - blobY) > 0.1;
             if (moving) requestAnimationFrame(move);
         };
         const setLabel = (text) => {
@@ -256,13 +247,15 @@
             cursor.classList.toggle('has-label', Boolean(text));
             if (!text) return;
             label.textContent = text;
-            // grow the pill to the label's width, flipping it near the window edges
+            // size the pill to the label's width, flipping it near the window edges,
+            // and pop it in from the corner closest to the pointer
             const width = label.offsetWidth;
             const left = x + 14 + width > window.innerWidth - 8 ? -(width + 14) : 14;
             const top = y + 14 + 34 > window.innerHeight - 8 ? -48 : 14;
             blob.style.setProperty('--w', `${width}px`);
             blob.style.setProperty('--lx', `${left}px`);
             blob.style.setProperty('--ly', `${top}px`);
+            blob.style.transformOrigin = `${left < 0 ? 'right' : 'left'} ${top < 0 ? 'bottom' : 'top'}`;
         };
 
         window.addEventListener('pointermove', (event) => {
@@ -273,7 +266,7 @@
                 shown = true;
                 blobX = x;
                 blobY = y;
-                root.classList.add('has-cursor', 'cursor-visible');
+                root.classList.add('cursor-visible');
             }
             if (!moving) {
                 moving = true;
@@ -285,11 +278,11 @@
             const target = event.target;
             if (!(target instanceof Element)) return;
             hovered = target;
-            // the cursor can't follow the pointer into an iframe, so step aside
+            // the label can't follow the pointer into an iframe, so step aside
             root.classList.toggle('cursor-visible', shown && target.tagName !== 'IFRAME');
             const link = target.closest('a[href], button, [data-cursor]');
             setLabel(link ? labelFor(link) : '');
-            // dark blob on light or lime surfaces so it stays visible
+            // dark pill on light or lime surfaces so it stays visible
             cursor.classList.toggle('is-dark', Boolean(target.closest('.bg-accent, .btn-primary, .stack-card')));
         });
         // the toggle's label ("Light mode" / "Dark mode") changes once clicked

@@ -364,13 +364,9 @@
     }
 }
 
-/* ---------- custom cursor + magnetic buttons (mouse only, added by main.js) ---------- */
-.has-cursor,
-.has-cursor * {
-    cursor: none !important;
-}
-
-/* .cursor sits exactly on the pointer; .cursor-blob is the visible shape inside it */
+/* ---------- hover label + magnetic buttons (mouse only, added by main.js) ---------- */
+/* The normal pointer stays visible. .cursor trails the pointer; .cursor-blob is the
+   label pill beside it, shown only over links and buttons */
 .cursor {
     position: fixed;
     left: 0;
@@ -389,28 +385,28 @@
     scale: 0.85;
 }
 
+/* offsets, width and transform-origin are set in main.js */
 .cursor-blob {
     position: absolute;
-    left: -7px;
-    top: -7px;
-    width: 14px;
-    height: 14px;
-    overflow: hidden;
-    border-radius: 9999px;
-    background: theme('colors.accent.DEFAULT');
-    box-shadow: 0 0 0 1.5px rgb(11 11 15 / 0.55);
-    /* transform (the stretch) is set every frame in main.js, so it is not transitioned */
-    transition: left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-        width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-        background-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* over a link the dot grows into a pill beside the pointer (offsets set in main.js) */
-.cursor.has-label .cursor-blob {
     left: var(--lx, 14px);
     top: var(--ly, 14px);
     width: var(--w, 80px);
     height: 34px;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: theme('colors.accent.DEFAULT');
+    box-shadow: 0 0 0 1.5px rgb(11 11 15 / 0.55);
+    opacity: 0;
+    scale: 0.6;
+    transition: opacity 0.2s ease, scale 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+        width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* over a link the pill pops in beside the pointer */
+.cursor.has-label .cursor-blob {
+    opacity: 1;
+    scale: 1;
 }
 
 .cursor-label {
@@ -423,7 +419,7 @@
     transition-delay: 0.12s;
 }
 
-/* on lime and light surfaces the blob turns dark so it stays visible */
+/* on lime and light surfaces the pill turns dark so it stays visible */
 .cursor.is-dark .cursor-blob {
     background: theme('colors.ink');
     box-shadow: 0 0 0 1.5px rgb(200 245 96 / 0.6);
@@ -433,12 +429,7 @@
     @apply text-accent;
 }
 
-/* Cal.com booking popup open: hand the pointer back to the browser */
-.cal-open.has-cursor,
-.cal-open.has-cursor * {
-    cursor: auto !important;
-}
-
+/* Cal.com booking popup open: hide the label so it doesn't sit over the popup */
 .cal-open .cursor {
     opacity: 0;
 }
