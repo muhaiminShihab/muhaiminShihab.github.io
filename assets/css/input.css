@@ -126,6 +126,11 @@
         @apply rounded-full border border-line-mid px-2.5 py-1 font-mono text-xs text-fg-soft;
     }
 
+    /* lime icon tile on industry cards; tilts when its card is hovered */
+    .ind-icon {
+        @apply grid size-12 shrink-0 place-items-center rounded-xl bg-accent/20 text-accent-fg transition-transform duration-500 motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-110;
+    }
+
     .btn {
         @apply inline-flex min-h-[44px] items-center justify-center gap-2.5 rounded-full px-6 py-3.5 font-semibold transition-colors duration-200;
     }

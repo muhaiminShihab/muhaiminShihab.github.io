@@ -221,7 +221,17 @@
                     <span class="eyebrow">01 / Work</span>
                     <h2 id="work-title" data-split class="section-title text-balance">Work that's <span class="hl">live in production</span></h2>
                 </div>
-                <p class="max-w-sm text-fg-muted md:text-right">Agency sites, a research platform, SaaS and e-commerce I built and shipped. They're all live, so open any of them and try it yourself, except the one under NDA.</p>
+                <div class="flex flex-col gap-3 md:max-w-md md:items-end">
+                    <span class="label">Industries</span>
+                    <!-- one pill per project below, tinted with that card's color -->
+                    <ul class="flex flex-wrap gap-2 md:justify-end" aria-label="Industries">
+                        <li class="chip border-transparent font-medium text-ink" style="background: #E6F5C4">Software agency</li>
+                        <li class="chip border-transparent font-medium text-ink" style="background: #FCEFC2">Business research</li>
+                        <li class="chip border-transparent font-medium text-ink" style="background: #ECE7DF">Luxury branding</li>
+                        <li class="chip border-transparent font-medium text-ink" style="background: #DCEBFB">Telecom</li>
+                        <li class="chip border-transparent font-medium text-ink" style="background: #D9F0E6">E-commerce</li>
+                    </ul>
+                </div>
             </div>
 
             <ol class="flex flex-col gap-6 md:gap-10" aria-label="Selected projects">
@@ -382,10 +392,120 @@
             </div>
         </section>
 
+        <!-- industries (icons: Lucide, ISC license) -->
+        <section id="industries" aria-labelledby="industries-title" class="flex flex-col gap-10 pt-24 lg:gap-14 lg:pt-28">
+            <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end" data-reveal>
+                <div class="flex max-w-2xl flex-col gap-2">
+                    <span class="eyebrow">02 / Industries</span>
+                    <h2 id="industries-title" data-split class="section-title text-balance">Industries I've <span class="hl">built for</span></h2>
+                </div>
+                <p class="max-w-sm text-fg-muted md:text-right">19 projects across 12 industries, from news portals in Bangladesh to a call center platform in Japan.</p>
+            </div>
+
+            <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Industries">
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal>
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">E-commerce &amp; Retail</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Online stores, POS and multi-vendor selling.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Nagadhat · System&nbsp;Builder · Beauty&nbsp;Supply&nbsp;Store</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 80ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" /><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" /><path d="M2 7h20" /><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Marketplaces &amp; B2B</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Price comparison and wholesale apps that connect buyers and sellers.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Asoldam · Bechakeena</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 160ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" /><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><path d="m2 16 6 6" /><circle cx="16" cy="9" r="2.9" /><circle cx="6" cy="5" r="3" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">FinTech &amp; Lending</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Loan management and payment systems with customer and admin panels.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Easy&nbsp;Loan · English&nbsp;Therapy</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal>
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">SaaS &amp; AI</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">An AI website builder and project management software with HRM.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Qtec&nbsp;Cloud · TimeQ</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 80ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8" /><path d="M15 18h-5" /><path d="M10 6h8v4h-8V6Z" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">News &amp; Media</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Newsroom CMSs, a local news portal and a content blog.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Global&nbsp;Fast&nbsp;Coder · Daily&nbsp;Bangladesh&nbsp;Mirror · Dealiving</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 160ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" /><path d="M21 16v2a4 4 0 0 1-4 4h-5" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Telecom</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">A cloud PBX and call center platform used by 2,000+ companies in Japan.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Cloud&nbsp;Call&nbsp;Center · under&nbsp;NDA</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal>
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Agencies &amp; Branding</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Sites for a software agency and a London luxury branding agency.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Qtec&nbsp;Agency · HWE</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 80ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Research &amp; Data</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Case studies, datasets and e-books across 14 industries, with paid plans.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Dataghor</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 160ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Real Estate &amp; PropTech</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">A property inspection app with real-time alerts and an admin panel.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Layr&nbsp;Protec</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal>
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /><path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Education</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">Payments for an English learning platform, and teaching web design in a classroom.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">English&nbsp;Therapy · Trendup&nbsp;Institute&nbsp;of&nbsp;IT</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 80ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /><path d="M17 18h1" /><path d="M12 18h1" /><path d="M7 18h1" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Manufacturing</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">A business site for a leading steel manufacturer in Bangladesh.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">Rupali&nbsp;Steel</p>
+                    </div>
+                </li>
+                <li class="tile tile-interactive spotlight group flex items-start gap-4 rounded-2xl p-6" data-reveal style="--d: 160ms">
+                    <span class="ind-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" /><path d="m18 15-2-2" /><path d="m15 18-2-2" /></svg></span>
+                    <div class="min-w-0">
+                        <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Nonprofit</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-muted">A youth charity site with relief programmes and volunteer sign-up.</p>
+                        <p class="mt-3 font-mono text-xs text-fg-soft">SAFE&nbsp;Foundation</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
         <!-- experience -->
         <section id="experience" aria-labelledby="exp-title" class="flex flex-col gap-10 pt-24 lg:flex-row lg:gap-12 lg:pt-28">
             <div class="flex flex-col gap-4 lg:w-1/3" data-reveal>
-                <span class="eyebrow">02 / Experience</span>
+                <span class="eyebrow">03 / Experience</span>
                 <h2 id="exp-title" data-split class="section-title">Where I've worked</h2>
                 <p class="max-w-[360px] text-fg-muted">From teaching web design in a classroom to shipping marketplaces and SaaS for product teams.</p>
             </div>
@@ -431,7 +551,7 @@
         <!-- about -->
         <section id="about" aria-labelledby="about-title" class="grid grid-cols-2 gap-4 pt-24 lg:grid-cols-4 lg:pt-28">
             <div class="tile spotlight col-span-2 flex flex-col gap-5 p-7 sm:p-10 lg:p-12" data-reveal>
-                <span class="eyebrow">03 / About</span>
+                <span class="eyebrow">04 / About</span>
                 <h2 id="about-title" data-split class="font-display text-[28px] font-semibold leading-[1.15] tracking-[-0.025em] sm:text-[34px] lg:text-[40px]">I like clean back ends, fast admin panels and interfaces people don't need a manual for.</h2>
                 <p class="text-lg text-fg-muted">I started out teaching web design in 2020. Since then I've built e-commerce platforms, loan management systems, news CMSs and project management tools, and I still love exploring new tools and technologies.</p>
             </div>
@@ -446,7 +566,7 @@
         <!-- contact -->
         <section id="contact" aria-labelledby="contact-title" class="mt-24 flex flex-col gap-10 rounded-[2rem] bg-accent p-8 text-ink sm:p-12 lg:mt-28 lg:flex-row lg:items-end lg:justify-between lg:p-16" data-reveal>
             <div class="flex flex-col gap-7 lg:w-[62%]">
-                <span class="font-mono text-[13px]">04 / Contact</span>
+                <span class="font-mono text-[13px]">05 / Contact</span>
                 <h2 id="contact-title" data-split class="font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-7xl lg:text-[88px]">Have a product in mind? Let's build it.</h2>
                 <div class="flex flex-wrap gap-3">
                     <a href="https://cal.com/muhaiminshihab/30min" target="_blank" rel="noopener" data-cal-link="muhaiminshihab/30min" data-cal-namespace="booking" class="btn-ink">
